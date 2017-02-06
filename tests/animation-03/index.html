@@ -6,18 +6,62 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sea Water rise | Egypt</title>
 
+        <link href="https://fonts.googleapis.com/css?family=Cormorant|Roboto|Roboto+Condensed" rel="stylesheet">
+
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
 
         <script src="assets/jquery/jquery.min.js"></script>
+        <script src="assets/jquery-ui/jquery-ui.js"></script>
         <script src="js/babylon/babylon.js"></script>
 
         <script src="js/main.js"></script>
+        <script src="js/tools.js"></script>
+        <script src="js/settings.js"></script>
+        <script src="js/models/App.js"></script>
     </head>
 
     <body>
 
         <div class="pagewrap">
-            <canvas id="renderCanvas"></canvas>
+            <div id="tools">
+                <div id="time-slider"></div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-head">
+                    <h2>Egypt</h2>
+                    <h3>Nile Delta: Alexandria, Caïro</h3>
+                </div>
+                <canvas class="tile-canvas" id="tile-egypt"></canvas>
+                <div class="tile-body">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Ut in ultricies est. Fusce at libero felis. Pellentesque
+                        a molestie nulla, nec varius nibh. Duis elementum eros
+                        risus, vitae fringilla enim rhoncus sed. Nunc condimentum
+                        facilisis purus, a hendrerit nibh aliquet quis. Morbi
+                        quis ornare lacus, vitae consequat velit. Nam feugiat
+                        sodales mi. Quisque consectetur porttitor ligula in
+                        malesuada. Aliquam tincidunt ex congue diam pretium,
+                        nec tempor leo rhoncus.
+                    </p>
+                    <p>
+                        Suspendisse potenti. Ut ut tortor risus. Nam congue enim
+                        eu dapibus sagittis. Cras eu quam ipsum. Donec in dolor
+                        mattis lacus iaculis sagittis quis eget metus. Praesent
+                        et diam sem. In sollicitudin mi a mattis maximus.
+                        Vestibulum ante ipsum primis in faucibus orci luctus et
+                        ultrices posuere cubilia Curae; Donec rutrum at lorem
+                        quis convallis. Sed id nulla eu odio imperdiet lacinia.
+                        Curabitur sagittis nisl orci, vel facilisis tortor
+                        hendrerit in. Pellentesque magna lacus, pharetra eu
+                        vulputate nec, pellentesque vel urna. Donec urna mauris,
+                        dictum vel orci sit amet, congue ullamcorper nisl.
+                    </p>
+                </div>
+            </div>
+
         </div>
 
 
