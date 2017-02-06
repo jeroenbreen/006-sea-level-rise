@@ -3,7 +3,8 @@ function App(canvas) {
     this.engine = null;
     this.status = settings.water;
     this.view = {
-        texture: true
+        texture: true,
+        camera: true
     };
 
     this.scene = null;
@@ -34,7 +35,7 @@ App.prototype.init = function() {
     // this.scene.registerBeforeRender(function () {
     //     self.animate();
     // });
-    this.updateWater()
+    this.updateWater();
     this.run();
 };
 
@@ -56,7 +57,7 @@ App.prototype.getScene = function() {
 };
 
 App.prototype.getCamera = function() {
-    var camera = new BABYLON.ArcRotateCamera('Camera', -Math.PI/2, Math.PI / 3, 12, BABYLON.Vector3.Zero(), this.scene);
+    var camera = new BABYLON.ArcRotateCamera('Camera', -Math.PI/2, 0, 12, BABYLON.Vector3.Zero(), this.scene);
     camera.attachControl(this.canvas, false);
     return camera
 };
@@ -152,12 +153,38 @@ App.prototype.updateWater = function() {
     this.water.position.y = this.water.scaling.y * this.status.size / 2;
 };
 
+
+
+// styling
+
+App.prototype.toggleCamera = function() {
+    this.view.camera = !this.view.camera;
+    if (this.view.camera) {
+        this.camera.alpha = -Math.PI/2;
+        this.camera.beta = 0;
+        this.camera.radius = 12;
+    } else {
+        this.camera.alpha = -Math.PI/2.5;
+        this.camera.beta = Math.PI/5;
+        this.camera.radius = 17;
+    }
+};
+
 App.prototype.toggleView = function() {
     this.view.texture = !this.view.texture;
     if (this.view.texture) {
         this.land.material = this.material;
 
     } else {
-        this.land.material = null;
+        var color = hexToRgb(pickers.land.toString()),
+            material = new BABYLON.StandardMaterial("material land", this.scene);
+        material.diffuseColor = new BABYLON.Color3(color[0],color[1],color[2]);
+        this.land.material = material;
+
     }
+};
+
+App.prototype.updateColor = function(type) {
+    var color = hexToRgb(pickers[type].toString());
+    this[type].material.diffuseColor = new BABYLON.Color3(color[0],color[1],color[2]);
 };

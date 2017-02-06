@@ -13,6 +13,7 @@
 
         <script src="assets/jquery/jquery.min.js"></script>
         <script src="assets/jquery-ui/jquery-ui.js"></script>
+        <script src="assets/jscolor-2.0.4/jscolor.min.js"></script>
         <script src="js/babylon/babylon.js"></script>
 
         <script src="js/main.js"></script>
@@ -25,9 +26,17 @@
 
         <div class="pagewrap">
             <div id="tools">
-                <div id="time-slider"></div>
-                <br><br>
-                <button onclick="app.toggleView()">Toggle image</button>
+                <div class="tools-set">
+                    Drag me.<br><br>
+                    <div id="time-slider"></div>
+                </div>
+                <div class="tools-set">
+                    <button onclick="app.toggleView()">Toggle image</button><br><br>
+                    <button onclick="app.toggleCamera()">Toggle camera</button>
+                </div>
+                <div class="tools-set colors-sets">
+
+                </div>
             </div>
 
             <div class="tile">
