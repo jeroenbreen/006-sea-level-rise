@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', function() {
             water = getWater(thisScene),
             land = getLand(thisScene),
             shadowGenerator = getShadowGenerator(light),
-            bumpMaterial = getBumpMaterial(thisScene);
+            bumpMaterial = getBumpMaterial(light);
         //land.material = bumpMaterial;
         camera = getCamera(thisScene, canvas);
 
@@ -72,6 +72,7 @@ function getLand(scene) {
     land.scaling.y = 0.1;
     land.receiveShadows = true;
     land.applyDisplacementMap('img/heightmap2.png', 0, 1);
+    land.receiveShadows = true;
     return land;
 }
 
