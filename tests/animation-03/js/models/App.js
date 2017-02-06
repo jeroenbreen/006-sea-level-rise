@@ -2,16 +2,20 @@ function App(canvas) {
     this.canvas = canvas;
     this.engine = null;
     this.status = settings.water;
+    this.view = {
+        texture: true
+    };
 
     this.scene = null;
     this.light = null;
     this.camera = null;
     this.tile = null;
     this.land = null;
+    this.material = null;
     this.water = null;
     this.shadowGenerator = null;
 
-    //this.init();
+    this.init();
 }
 
 
@@ -27,9 +31,10 @@ App.prototype.init = function() {
     this.water = this.getWater();
     this.shadowGenerator = this.getShadowGenerator();
 
-    this.scene.registerBeforeRender(function () {
-        self.animate();
-    });
+    // this.scene.registerBeforeRender(function () {
+    //     self.animate();
+    // });
+    this.updateWater()
     this.run();
 };
 
@@ -74,8 +79,7 @@ App.prototype.getTile = function() {
 };
 
 App.prototype.getLand = function() {
-    var material = new BABYLON.StandardMaterial("material land", this.scene),
-        land = BABYLON.Mesh.CreateGroundFromHeightMap(
+    var land = BABYLON.Mesh.CreateGroundFromHeightMap(
             'egypt',
             settings.imageData.texture,
             10,
@@ -88,7 +92,8 @@ App.prototype.getLand = function() {
             null
         ),
         color = hexToRgb(settings.color.land);
-    material.diffuseTexture = new BABYLON.Texture(settings.imageData.texture, this.scene);
+    this.material = new BABYLON.StandardMaterial("material land", this.scene);
+    this.material.diffuseTexture = new BABYLON.Texture(settings.imageData.texture, this.scene);
     //material.diffuseColor = new BABYLON.Color3(color[0],color[1],color[2]);
     //material.wireframe = true;
     //material.diffuseTexture = null;
@@ -97,7 +102,7 @@ App.prototype.getLand = function() {
     land.edgesWidth = 4.0;
     land.edgesColor = new BABYLON.Color4(0, 0, 1, 1);
     //material.diffuseTexture = a ? null : this.diffuseTexture
-    land.material = material;
+    land.material = this.material;
     // land.receiveShadows = true;
     return land;
 };
@@ -124,6 +129,11 @@ App.prototype.getShadowGenerator = function() {
 
 // animation
 
+App.prototype.slide = function(value) {
+    this.status.current = (this.status.max - this.status.min) * (value / 100) + this.status.min;
+    this.updateWater();
+};
+
 App.prototype.animate = function() {
     this.nextFrame();
     this.updateWater();
@@ -140,4 +150,14 @@ App.prototype.nextFrame = function() {
 App.prototype.updateWater = function() {
     this.water.scaling.y = this.status.current;
     this.water.position.y = this.water.scaling.y * this.status.size / 2;
+};
+
+App.prototype.toggleView = function() {
+    this.view.texture = !this.view.texture;
+    if (this.view.texture) {
+        this.land.material = this.material;
+
+    } else {
+        this.land.material = null;
+    }
 };
