@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Sea Water rise | Egypt</title>
+        <title>Sea Water rise</title>
 
         <link href="https://fonts.googleapis.com/css?family=Cormorant|Roboto|Roboto+Condensed" rel="stylesheet">
 
@@ -22,27 +22,38 @@
         <script src="js/settings.js"></script>
         <script src="js/models/App.js"></script>
         <script src="js/models/Tile.js"></script>
+        <script src="js/models/City.js"></script>
+        <script src="js/models/Slider.js"></script>
     </head>
 
     <body>
 
-        <div class="pagewrap">
-            <div id="tools">
-                <div class="tools-set">
-                    Drag me.<br><br>
-                    <div id="time-slider"></div>
-                </div>
-                <div class="tools-set">
-                    <button onclick="app.toggleView()">Toggle image</button><br><br>
-                    <button onclick="app.toggleCamera()">Toggle camera</button>
-                </div>
-                <div class="tools-set colors-sets">
-
-                </div>
+    <div id="tools">
+        <div class="tools-set">
+            <h3>Time Slider</h3>
+            <div class="slider-container">
+                <div id="time-slider"></div>
             </div>
-
-            <div id="tiles"></div>
         </div>
+        <div class="tools-set">
+            <h3>View Settings</h3>
+            <button onclick="app.toggleView()">Toggle image</button><br><br>
+            <button onclick="app.toggleCamera()">Toggle camera</button><br><br>
+            <button onclick="app.toggleSize()">Toggle size</button>
+        </div>
+        <div class="tools-set colors-sets">
+            <h3>Colors</h3>
+        </div>
+    </div>
+
+    <div class="wrapper">
+
+
+        <div id="tiles"></div>
+
+        <div class="slider-button slider-button-next" onclick="app.slider.next()"></div>
+        <div class="slider-button slider-button-prev" onclick="app.slider.prev()"></div>
+    </div>
 
 
     </body>

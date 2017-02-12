@@ -13,12 +13,14 @@ function Tile(app, tileData) {
     this.water = null;
     this.shadowGenerator = null;
 
-    this.init();
+    this.cities = [];
+
+    this.init(tileData);
 }
 
 
 
-Tile.prototype.init = function() {
+Tile.prototype.init = function(tileData) {
     var self = this;
     this.data.current = this.data.min;
     this.create();
@@ -31,11 +33,19 @@ Tile.prototype.init = function() {
     this.water = this.getWater();
     this.shadowGenerator = this.getShadowGenerator();
 
+    //this.initCities(tileData);
     // this.scene.registerBeforeRender(function () {
     //     self.animate();
     // });
     this.updateWater();
     this.run();
+};
+
+Tile.prototype.initCities = function(tileData) {
+    for (var i = 0, l = tileData.cities.length; i < l; i++) {
+        var city = new City(this.app, this, tileData.cities[i]);
+        this.cities.push(city);
+    }
 };
 
 Tile.prototype.create = function() {
@@ -67,7 +77,7 @@ Tile.prototype.run = function() {
 
 Tile.prototype.getScene = function() {
     var scene = new BABYLON.Scene(this.engine);
-    scene.clearColor = new BABYLON.Color3(255,255,255);
+    scene.autoClear = false;
     return scene;
 };
 
@@ -85,9 +95,10 @@ Tile.prototype.getLight = function() {
 
 Tile.prototype.getTile = function() {
     var material = new BABYLON.StandardMaterial("material tile", this.scene),
-        tile = BABYLON.Mesh.CreateBox("Tile", settings.water.size, this.scene, true),
+        tile = BABYLON.Mesh.CreateBox("Tile", settings.tile.size, this.scene, true),
         color = hexToRgb(settings.color.tile);
     material.diffuseColor = new BABYLON.Color3(color[0],color[1],color[2]);
+    material.checkOnlyOnce = true
     tile.material = material;
     tile.scaling.y = 0.1;
     tile.position.y = -0.5;
@@ -119,6 +130,7 @@ Tile.prototype.getLand = function() {
     land.edgesColor = new BABYLON.Color4(0, 0, 1, 1);
     //material.diffuseTexture = a ? null : this.diffuseTexture
     land.material = this.material;
+    this.material.checkOnlyOnce = true;
     // land.receiveShadows = true;
     return land;
 };
@@ -126,9 +138,10 @@ Tile.prototype.getLand = function() {
 
 Tile.prototype.getWater = function() {
     var material = new BABYLON.StandardMaterial("material water", this.scene),
-        water = BABYLON.Mesh.CreateBox("Water", settings.water.size, this.scene, true),
+        water = BABYLON.Mesh.CreateBox("Water", settings.tile.size, this.scene, true),
         color = hexToRgb(settings.color.water);
     material.diffuseColor = new BABYLON.Color3(color[0],color[1],color[2]);
+    material.checkOnlyOnce = true;
     water.material = material;
     return water;
 };
@@ -152,7 +165,7 @@ Tile.prototype.slide = function(value) {
 
 Tile.prototype.updateWater = function() {
     this.water.scaling.y = this.data.current;
-    this.water.position.y = this.water.scaling.y * settings.water.size / 2;
+    this.water.position.y = this.water.scaling.y * settings.tile.size / 2;
 };
 
 
@@ -186,4 +199,11 @@ Tile.prototype.setView = function(setting) {
 
 Tile.prototype.setColor = function(type, color) {
     this[type].material.diffuseColor = new BABYLON.Color3(color[0],color[1],color[2]);
+};
+
+
+// resize
+
+Tile.prototype.resize = function() {
+    $(this.canvas).css('height', $(this.canvas).outerWidth());
 };

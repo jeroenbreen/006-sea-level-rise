@@ -14,6 +14,7 @@ body {
     width: 100%;
     height: 100%;
     color: #111;
+    background: #222;
 }
 
 * {
@@ -27,46 +28,73 @@ body {
 /* tools */
 
 #tools {
+    position: absolute;
+    left: 0;
+    top: 40px;
+    background: #000;
     width: 200px;
-    padding: 10px;
+    padding: 10px 16px;
     float: left;
+    color: #aaa;
+    font-size: 10px;
+    z-index: 1000;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.4);
 }
 
 .tools-set {
     padding-bottom: 20px;
-    border-bottom: 1px solid #000;
+    border-bottom: 2px solid #222;
     margin-bottom: 20px;
 }
 
+.tools-set:last-child {
+    border-bottom: 0;
+}
+
 button {
-    border: 1px solid #000;
-    background: #fff;
-    padding: 10px 16px;
+    border: 1px solid #aaa;
+    background: #000;
+    padding: 8px 12px;
+    font-size: 10px;
     border-radius: 20px;
     cursor: pointer;
+    color: #aaa;
     outline: none!important;
 }
 
 button:hover {
-    background: #000;
+    border: 1px solid #fff;
     color: #fff;
 }
 
 .color-set input {
-    border: 0;
     padding: 10px;
     margin-bottom: 10px;
     box-shadow: 2px 2px 3px rgba(0,0,0,0.4);
     margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border: 1px solid #aaa;
+}
+
+.color-set input:hover {
+    border: 1px solid #fff;
 }
 
 
 
 /* slider */
 
+.slider-container {
+    padding: 0 10px;
+}
+
 body .ui-widget.ui-widget-content {
     border: 0;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #aaa;
+    border-radius: 0;
+    background: transparent;
     height: 1px;
     padding-top: 4px;
     width: 160px;
@@ -74,22 +102,36 @@ body .ui-widget.ui-widget-content {
 
 body .ui-slider-handle {
     border-radius: 50%;
-    background: #fff!important;
-    border: 1px solid #000!important;
+    background: #aaa!important;
+    border: 3px solid #000!important;
+    width: 16px!important;
+    height: 16px!important;
     outline: none!important;
     cursor: pointer!important;
 }
 
+body .ui-slider-handle:hover {
+    background: #fff!important;
+}
+
+
 
 /* tiles */
+
+#tiles {
+    transition: all 0.6s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
 
 .tile {
     width: 500px;
     margin-right: 10px;
-    background: #fff;
     padding: 10px 20px 40px 20px;
     box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
     float: left;
+    color: #fff;
 }
 
 .tile-head {
@@ -119,8 +161,81 @@ body .ui-slider-handle {
     height: 460px;
     touch-action: none;
     outline: none;
+    background: transparent;
 }
 
 .tile-body {
     padding: 10px;
+}
+
+
+/* minimized */
+
+.minimized .tile {
+    width: 300px;
+}
+
+.minimized .tile h2 {
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.minimized .tile h3 {
+    display: none;
+}
+
+.minimized .tile {
+    box-shadow: none;
+}
+
+.minimized #tiles {
+    left: 200px!important;
+    transition: none;
+}
+
+
+/* carroussel */
+
+.wrapper {
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+}
+
+.slider-button {
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 90%;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    color: #000;
+    text-align: center;
+    font-size: 40px;
+    padding-top: 6px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.minimized .slider-button {
+    display: none;
+}
+
+.slider-button-next {
+    right: 10px;
+}
+
+.slider-button-next:after {
+    content: '›';
+}
+
+.slider-button-prev {
+    left: 10px;
+}
+
+.slider-button-prev:after {
+    content: '‹';
 }

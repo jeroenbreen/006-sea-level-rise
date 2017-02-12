@@ -1,8 +1,11 @@
 var settings = {
-    water: {
+    tile: {
         size: 10
     },
-    steps: 200,
+    city: {
+        size: 0.3,
+        color: 'fff'
+    },
     color: {
         land: 'EBFFD9',
         water: '3ad',
@@ -11,8 +14,7 @@ var settings = {
 };
 
 var pickers = {};
-settings.water.current = settings.water.min;
-settings.water.delta = (settings.water.max - settings.water.min) / settings.steps;
+
 
 $(window).load(function(){
     addColorPicker('land');
@@ -21,14 +23,14 @@ $(window).load(function(){
 });
 
 function addColorPicker(type) {
-        var set = $('<div class="color-set"></div>'),
-            string = "app.updateColor('" + type + "')",
-            input = $('<input onchange="' + string + '">'),
-            label = '<span>Color ' + type + '</span>',
-            picker = new jscolor(input[0]);
-        set.append(input);
-        set.append(label);
-        pickers[type] = picker;
-        picker.fromString(settings.color[type]);
-        $('.colors-sets').append(set);
+    var set = $('<div class="color-set"></div>'),
+        string = "app.updateColor('" + type + "')",
+        input = $('<input onchange="' + string + '">'),
+        label = '<span>Color ' + type + '</span>',
+        picker = new jscolor(input[0]);
+    set.append(input);
+    set.append(label);
+    pickers[type] = picker;
+    picker.fromString(settings.color[type]);
+    $('.colors-sets').append(set);
 }

@@ -4,6 +4,7 @@ function App() {
         camera: true
     };
     this.tiles = [];
+    this.slider = null;
     this.init();
 }
 
@@ -12,6 +13,7 @@ App.prototype.init = function() {
         var tile = new Tile(this, tiles[i]);
         this.tiles.push(tile);
     }
+    this.slider = new Slider(this);
 };
 
 App.prototype.slide = function(value) {
@@ -35,6 +37,13 @@ App.prototype.toggleView = function() {
     this.view.texture = !this.view.texture;
     for (var i = 0, l = this.tiles.length; i < l; i++) {
         this.tiles[i].setView(this.view.texture);
+    }
+};
+
+App.prototype.toggleSize = function() {
+    $('.wrapper').toggleClass('minimized');
+    for (var i = 0, l = this.tiles.length; i < l; i++) {
+        this.tiles[i].resize();
     }
 };
 
