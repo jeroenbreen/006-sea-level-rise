@@ -24,6 +24,10 @@ Tile.prototype.init = function(tileData) {
     var self = this;
     this.data.current = this.data.min;
     this.create();
+    this.initModel();
+};
+
+Tile.prototype.initModel = function() {
     this.engine = new BABYLON.Engine(this.canvas, true);
     this.scene = this.getScene();
     this.light = this.getLight();
@@ -54,7 +58,7 @@ Tile.prototype.create = function() {
         title = $('<h2>' + this.data.title + '</h2>'),
         subtitle = $('<h3>' + this.data.subtitle + '</h3>'),
         canvas = $('<canvas class="tile-canvas" id="tile-' + this.data.title.toLowerCase() + '"></canvas>'),
-        tileBody = $('<div class="tile-body">' + this.data.content + '</div>');
+        tileBody = $('<div class="tile-body">' + this.data.text + '</div>');
     tileHead.append(title);
     tileHead.append(subtitle);
     tile.append(tileHead);

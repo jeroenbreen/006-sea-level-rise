@@ -1,6 +1,3 @@
-
-
-
 $(window).ready(function(){
 
     var canvas = document.getElementById('tile-egypt');

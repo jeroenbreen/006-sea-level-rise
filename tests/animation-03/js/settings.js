@@ -16,11 +16,11 @@ var settings = {
 var pickers = {};
 
 
-$(window).load(function(){
-    addColorPicker('land');
-    addColorPicker('water');
-    addColorPicker('tile');
-});
+// $(window).load(function(){
+//     addColorPicker('land');
+//     addColorPicker('water');
+//     addColorPicker('tile');
+// });
 
 function addColorPicker(type) {
     var set = $('<div class="color-set"></div>'),

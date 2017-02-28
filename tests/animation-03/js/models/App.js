@@ -14,6 +14,7 @@ App.prototype.init = function() {
         this.tiles.push(tile);
     }
     this.slider = new Slider(this);
+    this.toggleCamera();
 };
 
 App.prototype.slide = function(value) {
