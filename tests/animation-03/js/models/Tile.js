@@ -193,7 +193,7 @@ Tile.prototype.setView = function(setting) {
         this.land.material = this.material;
 
     } else {
-        var color = hexToRgb(pickers.land.toString()),
+        var color = hexToRgb(settings.color.land),
             material = new BABYLON.StandardMaterial("material land", this.scene);
         material.diffuseColor = new BABYLON.Color3(color[0],color[1],color[2]);
         this.land.material = material;
