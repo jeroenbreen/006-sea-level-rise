@@ -43,6 +43,7 @@ Tile.prototype.initModel = function() {
     // });
     this.updateWater();
     this.run();
+
 };
 
 Tile.prototype.initCities = function(tileData) {
@@ -75,6 +76,9 @@ Tile.prototype.run = function() {
     });
 };
 
+Tile.prototype.stop = function() {
+    this.engine.stopRenderLoop();
+};
 
 
 // creation
@@ -87,7 +91,7 @@ Tile.prototype.getScene = function() {
 
 Tile.prototype.getCamera = function() {
     var camera = new BABYLON.ArcRotateCamera('Camera', -Math.PI/2, 0, 12, BABYLON.Vector3.Zero(), this.scene);
-    camera.attachControl(this.canvas, false);
+    //camera.attachControl(this.canvas, false);
     return camera
 };
 
