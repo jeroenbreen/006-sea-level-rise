@@ -14,8 +14,18 @@ Slider.prototype.init = function() {
 };
 
 Slider.prototype.goto = function() {
-    var left = ' -' + (this.current * this.width) + 'px';
+    var self = this,
+        left = ' -' + (this.current * this.width) + 'px';
     this.element.css('left', left);
+    $('.tile').each(function(){
+        console.log($('#tile-' + self.current)[0]);
+        console.log(this);
+        if (this === $('#tile-' + self.current)[0]) {
+            $(this).addClass('current');
+        } else {
+            $(this).removeClass('current');
+        }
+    });
 
     if (this.current === 0) {
         $('.slider-button-prev').fadeOut(200);

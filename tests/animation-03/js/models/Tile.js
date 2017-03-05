@@ -1,7 +1,8 @@
-function Tile(app, tileData) {
+function Tile(app, tileData, index) {
     this.app = app;
     this.data = tileData;
 
+    this.index = index;
     this.canvas = null;
     this.engine = null;
     this.scene = null;
@@ -54,7 +55,7 @@ Tile.prototype.initCities = function(tileData) {
 };
 
 Tile.prototype.create = function() {
-    var tile = $('<div class="tile"></div>'),
+    var tile = $('<div class="tile" id="tile-' + this.index + '"></div>'),
         tileHead = $('<div class="tile-head"></div>'),
         title = $('<h2>' + this.data.title + '</h2>'),
         subtitle = $('<h3>' + this.data.subtitle + '</h3>'),
@@ -90,9 +91,21 @@ Tile.prototype.getScene = function() {
 };
 
 Tile.prototype.getCamera = function() {
-    var camera = new BABYLON.ArcRotateCamera('Camera', -Math.PI/2, 0, 12, BABYLON.Vector3.Zero(), this.scene);
+    var camera = new BABYLON.ArcRotateCamera('Camera', -Math.PI/2.5, Math.PI/5, 17, BABYLON.Vector3.Zero(), this.scene);
     //camera.attachControl(this.canvas, false);
     return camera
+};
+
+Tile.prototype.setCamera = function(setting) {
+    if (setting) {
+        this.camera.alpha = -Math.PI/2;
+        this.camera.beta = 0;
+        this.camera.radius = 12;
+    } else {
+        this.camera.alpha = -Math.PI/2.5;
+        this.camera.beta = Math.PI/5;
+        this.camera.radius = 17;
+    }
 };
 
 Tile.prototype.getLight = function() {
@@ -179,18 +192,6 @@ Tile.prototype.updateWater = function() {
 
 
 // styling
-
-Tile.prototype.setCamera = function(setting) {
-    if (setting) {
-        this.camera.alpha = -Math.PI/2;
-        this.camera.beta = 0;
-        this.camera.radius = 12;
-    } else {
-        this.camera.alpha = -Math.PI/2.5;
-        this.camera.beta = Math.PI/5;
-        this.camera.radius = 17;
-    }
-};
 
 Tile.prototype.setView = function(setting) {
     if (setting) {

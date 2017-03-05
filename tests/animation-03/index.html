@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Sea Water rise</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Cormorant|Roboto|Roboto+Condensed" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
 
@@ -28,83 +28,120 @@
 
     <body>
 
-    <div id="top">
-        <div id="intro">
-            <div class="intro-text">
-                <div id="branding">
-                    <h1>Sea Level Rise</h1>
-                </div>
-                <p>
-                <h4>Lorem ipsum dolor sit amet</h4>
-                Consectetur adipiscing elit. Donec vel convallis tellus, et congue
-                nisl. Sed et leo a ex volutpat tempor sed sed massa. Cras
-                scelerisque dapibus lorem. Proin laoreet lectus tortor. Proin
-                eleifend efficitur mollis. Aliquam vulputate lacus erat, ut congue
-                lorem fringilla nec. Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Maecenas venenatis feugiat venenatis. Quisque
-                mattis velit eget nisl blandit condimentum. Curabitur at blandit mi.
-                Praesent tempus finibus semper. Donec laoreet facilisis metus vel tempor.
-                </p>
-                <p>
-                <h4>Proin faucibus</h4>
-                Auctor blandit. Vestibulum lobortis efficitur eros sit amet mattis.
-                Integer sagittis et mauris eu sollicitudin. Cras blandit nisi sed
-                aliquam bibendum. Quisque et aliquam est. Phasellus id tincidunt
-                lacus. Duis id mollis mauris. Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Nulla nec quam at sem maximus
-                iaculis ac efficitur mi. Duis sed facilisis enim, nec elementum
-                nisl. Ut quis mattis felis. Mauris lacinia rhoncus mi, vel auctor
-                odio laoreet eu. Cum sociis natoque penatibus et magnis dis
-                parturient montes, nascetur ridiculus mus. Suspendisse ac rutrum
-                velit, eget gravida justo. In aliquam massa et leo elementum, nec
-                posuere enim auctor. Duis interdum eget mauris in condimentum.
-                </p>
-                <p>
-                    Integer egestas mi in odio viverra, id pretium velit dictum. Nullam
-                    nec urna lacinia, tempor risus ac, consequat arcu. Donec non volutpat
-                    lectus. Nunc scelerisque, quam ac aliquet varius, tortor ipsum
-                    faucibus purus, sollicitudin mollis diam ex blandit elit. Nulla et
-                    venenatis ex. Sed sodales quam vel dui faucibus sagittis. Donec ac
-                    odio eget arcu varius pulvinar non quis neque. Proin vel nibh
-                    porttitor, tincidunt mi sit amet, pretium leo. Aliquam quis mi nec
-                    massa facilisis maximus ac in augue. Vestibulum blandit in nisi in
-                    pharetra. Praesent facilisis massa sit amet neque tristique, ac
-                    vehicula ipsum porta. Etiam eu nunc vel diam elementum tempus.
-                    Integer non augue vestibulum, eleifend purus eget, mollis nunc.
-                    In mollis consequat metus.
-                </p>
+    <div id="menu">
+        <div id="menu-container">
+            <div id="branding">
+                <h1>Sea Level Rise</h1>
+                <h2>An interactive
+                    infographic
+                    about Climate
+                    Change related
+                    effects.</h2>
             </div>
-            <div class="slider-scrim-bottom"></div>
-        </div>
+            <div id="intro-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fringilla pulvinar eros eget maximus. Morbi in bibendum ipsum, et tincidunt leo. Aliquam tristique ac sem sit amet aliquet. Duis ullamcorper ultricies ultrices.
+                <br><br>
+                Fusce molestie magna condimentum, efficitur enim quis, porta lectus. Morbi gravida lacinia posuere. Nam non ipsum ut mi congue consequat sed sed velit. Donec eu fringilla sapien. Curabitur auctor lacus eu erat posuere, in mollis ipsum iaculis. Aenean mi mauri.
 
-        <div class="wrapper">
-            <div id="tiles"></div>
-            <div id="slider-scrim-left" class="slider-scrim"></div>
-            <div id="slider-scrim-right" class="slider-scrim"></div>
-            <div class="slider-button slider-button-next" onclick="app.slider.next()"></div>
-            <div class="slider-button slider-button-prev" onclick="app.slider.prev()"></div>
-            <div class="slider-scrim-bottom"></div>
-        </div>
+            </div>
+            <div id="buttons">
+                <div class="menu-button" onclick="app.goto('context')">
+                    <div class="menu-button-image">
+                        <img src="img/menu/context.png">
+                    </div>
+                    <div class="menu-button-text">
+                        <h3>Context</h3>
+                        <div class="menu-button-goto">
+                            continue reading
+                            <div class="menu-button-triangle">
+                                ▸
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="menu-button" onclick="app.goto('causes')">
+                    <div class="menu-button-image">
+                        <img src="img/menu/causes-and-effects.png">
+                    </div>
+                    <div class="menu-button-text">
+                        <h3>Causes & Effects</h3>
+                        <div class="menu-button-goto">
+                            continue reading
+                            <div class="menu-button-triangle">
+                                ▸
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-button" onclick="app.goto('cases')">
+                    <div class="menu-button-image">
+                        <img src="img/menu/cases.png">
+                    </div>
+                    <div class="menu-button-text">
+                        <h3>Cases</h3>
+                        <div class="menu-button-goto">
+                            continue reading
+                            <div class="menu-button-triangle">
+                                ▸
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="bottom">
-        <div id="tools">
-            <div class="tools-set">
-                <button onclick="app.toggleView()">Toggle image</button> <button onclick="app.toggleCamera()">Toggle camera</button> <button onclick="app.toggleSize()">Toggle size</button>
-            </div>
+    <div id="content">
+
+        <div id="chapter-context" class="chapter">
+            Hier het verhaal context
+        </div>
+
+        <div id="chapter-causes" class="chapter">
+            Hier het verhaal causes
         </div>
 
 
 
-        <div id="time-slider-container">
-            <div class="tools-set">
-                <h3>Time Slider</h3>
-                <div class="slider-container">
-                    <div id="time-slider"></div>
+        <div id="chapter-cases" class="chapter">
+            <div class="top">
+
+
+                <div class="wrapper">
+                    <div id="tiles"></div>
+                    <div id="slider-scrim-left" class="slider-scrim"></div>
+                    <div id="slider-scrim-right" class="slider-scrim"></div>
+                    <div class="slider-button slider-button-next" onclick="app.slider.next()"></div>
+                    <div class="slider-button slider-button-prev" onclick="app.slider.prev()"></div>
+                    <div class="slider-scrim-bottom"></div>
+                </div>
+
+            </div>
+
+            <div class="bottom">
+                <div id="tools">
+                    <div class="tools-set">
+                        <button onclick="app.toggleView()">Toggle image</button>
+                        <button onclick="app.toggleCamera()">Toggle camera</button>
+                    </div>
+                </div>
+
+
+
+                <div id="time-slider-container">
+                     <div class="tools-set">
+                        <h3>Time Slider</h3>
+                        <div class="slider-container">
+                            <div id="time-slider"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+
     </div>
 
 

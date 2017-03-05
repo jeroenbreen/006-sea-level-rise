@@ -1,12 +1,13 @@
 function App() {
     this.view = {
         texture: true,
-        camera: true
+        camera: false
     };
     this.tiles = [];
     this.slider = null;
     this.timer = null;
     this.status = {
+        intro: true,
         playing: true
     };
     this.init();
@@ -14,22 +15,58 @@ function App() {
 
 App.prototype.init = function() {
     var self = this;
+    this.domActions();
     for (var i = 0, l = tiles.length; i < l; i++) {
-        var tile = new Tile(this, tiles[i]);
+        var tile = new Tile(this, tiles[i], i);
         this.tiles.push(tile);
     }
     this.slider = new Slider(this);
-    setTimeout(function(){
-        self.stop();
-    }, 2000);
 };
+
+App.prototype.domActions = function() {
+    var introText = $('#intro-text');
+    introText.css('height', introText.outerHeight(true))
+};
+
+
+// chapters
+
+App.prototype.goto = function(chapter) {
+    var timeout = 0;
+    if (this.status.intro) {
+        this.collapse();
+        timeout = 1000;
+    }
+    setTimeout(function(){
+        $('.chapter').each(function(){
+            if ($(this).attr('id') === 'chapter-' + chapter) {
+                $(this).addClass('current-chapter');
+            } else {
+                $(this).removeClass('current-chapter');
+            }
+        })
+    }, timeout);
+};
+
+App.prototype.collapse = function() {
+    var introText = $('#intro-text');
+    introText.css('height', 0);
+    setTimeout(function(){
+        $('body').addClass('active');
+        introText.hide();
+    }, 500);
+    this.status.intro = false;
+};
+
+
+
+// babylon
 
 App.prototype.stop = function(value) {
     this.status.playing = false;
     for (var i = 0, l = this.tiles.length; i < l; i++) {
         this.tiles[i].stop();
     }
-    console.log('stop');
 };
 
 App.prototype.play = function(value) {
@@ -37,7 +74,6 @@ App.prototype.play = function(value) {
     for (var i = 0, l = this.tiles.length; i < l; i++) {
         this.tiles[i].run();
     }
-    console.log('play');
 };
 
 App.prototype.delayStop = function() {
