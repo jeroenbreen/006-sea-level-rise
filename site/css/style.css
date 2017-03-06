@@ -58,7 +58,7 @@ body {
 /* cases */
 
 .top {
-    height: calc(100% - 230px);
+    height: calc(100% - 110px);
     position: absolute;
     left: 0;
     top: 0;
@@ -75,7 +75,7 @@ body {
 }
 
 .bottom {
-    height: 230px;
+    height: 110px;
     background: #EBEBEB;
     position: absolute;
     left: 0;
@@ -87,7 +87,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 200px;
+    width: 300px;
     height: 100%;
     padding: 20px;
 }
@@ -96,7 +96,7 @@ body {
     position: absolute;
     right: 0;
     top: 0;
-    width: calc(100% - 200px);
+    width: calc(100% - 300px);
     height: 100%;
     padding: 20px;
 }
@@ -230,22 +230,30 @@ body {
     font-size: 12px;
     line-height: 14px;
     margin: 0;
+    text-align: center;
 }
 
 .tools-set {
+    display: inline-block;
+    margin: 0 6px 6px 0;
+}
+
+.tools-container {
     color: #000;
-    padding: 4px;
+    padding: 8px;
     background: #fff;
-    margin: 6px 0 16px 0;
+    margin-top: 6px;
     font-size: 12px;
 }
 
 .tools-set-svg {
     display: inline-block;
     vertical-align: top;
+    height: 40px;
 }
 
-.tools-set svg {
+.tools-set svg,
+.tools-set img {
     display: inline-block;
     width: 40px;
     height: 40px;
@@ -257,11 +265,14 @@ body {
     background: #000;
 }
 
-.tools-set .current rect,
-.tools-set svg:hover rect,
-.tools-set .current polygon,
-.tools-set svg:hover polygon {
-    fill: #e03a6c;
+.tools-set .current svg,
+.tools-set svg:hover {
+    outline: 1px solid #e03a6c;
+}
+
+.tools-set .current img,
+.tools-set img:hover {
+    outline: 1px solid #e03a6c;
 }
 
 .tools-set-arrow {
@@ -269,7 +280,8 @@ body {
     width: 12px;
     height: 40px;
     text-align: center;
-    padding-top: 12px;
+    padding-top: 8px;
+    font-weight: 700;
     vertical-align: top;
 }
 
@@ -293,7 +305,11 @@ body {
 /* slider */
 
 .slider-container {
-    padding: 150px 240px 0 0;
+    padding: 10px 240px 0 0;
+}
+
+#time-slider {
+    position: relative;
 }
 
 body .ui-widget.ui-widget-content {
@@ -331,7 +347,7 @@ body .ui-slider-horizontal .ui-slider-range-min {
     width: 300px;
     padding: 16px;
     background: #fff;
-    box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
 }
 
 .time-slider-text:after {
@@ -371,6 +387,30 @@ body .ui-slider-horizontal .ui-slider-range-min {
     display: inline-block;
     vertical-align: top;
     top: 4px;
+}
+
+.time-label {
+    position: absolute;
+    top: 30px;
+    font-size: 10px;
+    width: 50px;
+    text-align: center;
+    background: #000;
+    color: #e03a6c;
+    padding: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+.time-label:after {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    width: 20px;
+    height: 12px;
+    background-image: url('../img/triangle2.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    content: '';
 }
 
 

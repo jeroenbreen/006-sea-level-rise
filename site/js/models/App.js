@@ -31,11 +31,14 @@ App.prototype.domActions = function() {
 
 // chapters
 
-App.prototype.goto = function(chapter) {
+App.prototype.goto = function(chapter, fast) {
     var timeout = 0;
     if (this.status.intro) {
         this.collapse();
         timeout = 1000;
+    }
+    if (fast) {
+        timeout = 0;
     }
     setTimeout(function(){
         $('.chapter').each(function(){

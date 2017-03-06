@@ -122,37 +122,37 @@
 
             <div class="bottom">
                 <div id="tools">
-                    <h3>Camera</h3>
                     <div class="tools-set">
-                        <div id="camera-ortho" class="tools-set-svg">
-                            <svg onclick="app.setCamera('ortho');">
-                                <rect x="4" y="4" width="32" height="32"/>
-                            </svg>
-                        </div>
-                        <div class="tools-set-arrow">
-                            →
-                        </div>
-                        <div id="camera-perspective" class="tools-set-svg current">
-                            <svg onclick="app.setCamera('perspective');">
-                                <polygon points="14.52,3.465 0.914,24.252 1.104,25.386 33.417,36.535 34.55,35.779 39.086,8.379 "/>
-                            </svg>
+                        <h3>Camera</h3>
+                        <div class="tools-container">
+                            <div id="camera-ortho" class="tools-set-svg">
+                                <svg onclick="app.setCamera('ortho');">
+                                    <rect x="4" y="4" width="32" height="32"/>
+                                </svg>
+                            </div>
+                            <div class="tools-set-arrow">
+                                →
+                            </div>
+                            <div id="camera-perspective" class="tools-set-svg current">
+                                <svg onclick="app.setCamera('perspective');">
+                                    <polygon points="14.52,3.465 0.914,24.252 1.104,25.386 33.417,36.535 34.55,35.779 39.086,8.379 "/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
 
-                    <h3>Texture</h3>
                     <div class="tools-set">
-                        <div id="texture-full" class="tools-set-svg current">
-                            <svg onclick="app.setTexture('full');">
-                                <rect x="4" y="4" width="32" height="32"/>
-                            </svg>
-                        </div>
-                        <div class="tools-set-arrow">
-                            →
-                        </div>
-                        <div id="texture-mono" class="tools-set-svg">
-                            <svg onclick="app.setTexture('mono');">
-                                <rect x="4" y="4" width="32" height="32"/>
-                            </svg>
+                        <h3>Texture</h3>
+                        <div class="tools-container">
+                            <div id="texture-full" class="tools-set-svg current" onclick="app.setTexture('full');">
+                                <img src="img/full.png">
+                            </div>
+                            <div class="tools-set-arrow">
+                                →
+                            </div>
+                            <div id="texture-mono" class="tools-set-svg" onclick="app.setTexture('mono');">
+                                <img src="img/monotone.png">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -174,6 +174,15 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="time-label" style="left:calc(200% / 4 - 25px)">
+                                2100
+                            </div>
+                            <div class="time-label" style="left:calc(117% / 4 - 25px)">
+                                Today
+                            </div>
+                            <div class="time-label" style="left:-25px">
+                                1900
                             </div>
                         </div>
                     </div>
