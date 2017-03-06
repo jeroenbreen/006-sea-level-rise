@@ -60,6 +60,8 @@ App.prototype.collapse = function() {
 
 
 
+
+
 // babylon
 
 App.prototype.stop = function(value) {
@@ -101,7 +103,25 @@ App.prototype.slide = function(value) {
 
 
 
+
+
 // styling
+
+App.prototype.setCamera = function(type) {
+    if (type === 'ortho') {
+        if (!this.view.camera) {
+            $('#camera-ortho').addClass('current');
+            $('#camera-perspective').removeClass('current');
+            this.toggleCamera()
+        }
+    } else {
+        if (this.view.camera) {
+            $('#camera-ortho').removeClass('current');
+            $('#camera-perspective').addClass('current');
+            this.toggleCamera()
+        }
+    }
+};
 
 App.prototype.toggleCamera = function() {
     this.play();
@@ -112,7 +132,23 @@ App.prototype.toggleCamera = function() {
     this.delayStop();
 };
 
-App.prototype.toggleView = function() {
+App.prototype.setTexture = function(type) {
+    if (type === 'full') {
+        if (!this.view.texture) {
+            $('#texture-full').addClass('current');
+            $('#texture-mono').removeClass('current');
+            this.toggleTexture()
+        }
+    } else {
+        if (this.view.texture) {
+            $('#texture-full').removeClass('current');
+            $('#texture-mono').addClass('current');
+            this.toggleTexture()
+        }
+    }
+};
+
+App.prototype.toggleTexture = function() {
     this.play();
     this.view.texture = !this.view.texture;
     for (var i = 0, l = this.tiles.length; i < l; i++) {

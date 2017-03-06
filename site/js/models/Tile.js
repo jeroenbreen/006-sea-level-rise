@@ -180,7 +180,7 @@ Tile.prototype.getShadowGenerator = function() {
 // animation
 
 Tile.prototype.slide = function(value) {
-    this.data.current = (this.data.max - this.data.min) * (value / 100) + this.data.min;
+    this.data.current = (this.data.max - this.data.min) * (value) + this.data.min;
     this.updateWater();
 };
 

@@ -18,8 +18,6 @@ Slider.prototype.goto = function() {
         left = ' -' + (this.current * this.width) + 'px';
     this.element.css('left', left);
     $('.tile').each(function(){
-        console.log($('#tile-' + self.current)[0]);
-        console.log(this);
         if (this === $('#tile-' + self.current)[0]) {
             $(this).addClass('current');
         } else {

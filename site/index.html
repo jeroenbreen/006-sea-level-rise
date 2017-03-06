@@ -122,19 +122,59 @@
 
             <div class="bottom">
                 <div id="tools">
+                    <h3>Camera</h3>
                     <div class="tools-set">
-                        <button onclick="app.toggleView()">Toggle image</button>
-                        <button onclick="app.toggleCamera()">Toggle camera</button>
+                        <div id="camera-ortho" class="tools-set-svg">
+                            <svg onclick="app.setCamera('ortho');">
+                                <rect x="4" y="4" width="32" height="32"/>
+                            </svg>
+                        </div>
+                        <div class="tools-set-arrow">
+                            →
+                        </div>
+                        <div id="camera-perspective" class="tools-set-svg current">
+                            <svg onclick="app.setCamera('perspective');">
+                                <polygon points="14.52,3.465 0.914,24.252 1.104,25.386 33.417,36.535 34.55,35.779 39.086,8.379 "/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <h3>Texture</h3>
+                    <div class="tools-set">
+                        <div id="texture-full" class="tools-set-svg current">
+                            <svg onclick="app.setTexture('full');">
+                                <rect x="4" y="4" width="32" height="32"/>
+                            </svg>
+                        </div>
+                        <div class="tools-set-arrow">
+                            →
+                        </div>
+                        <div id="texture-mono" class="tools-set-svg">
+                            <svg onclick="app.setTexture('mono');">
+                                <rect x="4" y="4" width="32" height="32"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
 
 
 
                 <div id="time-slider-container">
-                     <div class="tools-set">
-                        <h3>Time Slider</h3>
-                        <div class="slider-container">
-                            <div id="time-slider"></div>
+                    <div class="slider-container">
+                        <div id="time-slider">
+                            <div id="time-slider-handle" class="ui-slider-handle">
+                                <div class="time-slider-text">
+                                    <div id="time-slider-year">xxx</div>
+                                    <div id="time-slider-slr">
+                                        <div class="time-slider-slr-pre">
+                                            Expected sea level rise
+                                        </div>
+                                        <div id="time-slider-slr-nr">
+                                            +0.0m
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

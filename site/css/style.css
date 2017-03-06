@@ -47,13 +47,7 @@ body {
     left: 0;
 }
 
-.top {
-    height: calc(100% - 100px);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-}
+
 
 
 
@@ -62,6 +56,14 @@ body {
 
 
 /* cases */
+
+.top {
+    height: calc(100% - 230px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
 
 .wrapper {
     position: absolute;
@@ -73,7 +75,8 @@ body {
 }
 
 .bottom {
-    height: 100px;
+    height: 230px;
+    background: #EBEBEB;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -84,20 +87,18 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 400px;
+    width: 200px;
     height: 100%;
     padding: 20px;
-    z-index: 1000;
 }
 
 #time-slider-container {
     position: absolute;
     right: 0;
     top: 0;
-    width: calc(100% - 400px);
+    width: calc(100% - 200px);
     height: 100%;
     padding: 20px;
-    z-index: 1000;
 }
 
 
@@ -224,34 +225,52 @@ body {
 
 /* tools */
 
+#tools h3 {
+    font-family: 'Merriweather';
+    font-size: 12px;
+    line-height: 14px;
+    margin: 0;
+}
+
 .tools-set {
-    color: #e03a6c;
-    font-size: 10px;
-}
-
-.tools-set h3 {
-    margin-top: 0;
-}
-
-button {
-    border: 1px solid #e03a6c;
-    background: #fff;
-    padding: 8px 12px;
-    font-size: 10px;
-    border-radius: 20px;
-    cursor: pointer;
-    color: #e03a6c;
-    outline: none!important;
-}
-
-button:hover {
-    border: 1px solid #000;
     color: #000;
+    padding: 4px;
+    background: #fff;
+    margin: 6px 0 16px 0;
+    font-size: 12px;
 }
 
-.color-set {
-    float: left;
-    margin-right: 20px;
+.tools-set-svg {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.tools-set svg {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.tools-set svg rect,
+.tools-set svg polygon {
+    background: #000;
+}
+
+.tools-set .current rect,
+.tools-set svg:hover rect,
+.tools-set .current polygon,
+.tools-set svg:hover polygon {
+    fill: #e03a6c;
+}
+
+.tools-set-arrow {
+    display: inline-block;
+    width: 12px;
+    height: 40px;
+    text-align: center;
+    padding-top: 12px;
+    vertical-align: top;
 }
 
 .color-set input {
@@ -274,23 +293,22 @@ button:hover {
 /* slider */
 
 .slider-container {
-    padding: 0 10px;
+    padding: 150px 240px 0 0;
 }
 
 body .ui-widget.ui-widget-content {
     border: 0;
-    border-bottom: 1px solid #e03a6c;
     border-radius: 0;
-    background: transparent;
-    height: 1px;
+    background: #fff;
+    height: 16px;
     padding-top: 8px;
     width: 100%;
 }
 
 body .ui-slider-handle {
     border-radius: 50%;
-    background: #fff!important;
-    border: 1px solid #e03a6c!important;
+    background: transparent!important;
+    border: 0!important;
     width: 24px!important;
     height: 24px!important;
     outline: none!important;
@@ -298,7 +316,61 @@ body .ui-slider-handle {
 }
 
 body .ui-slider-handle:hover {
-    background: #fff!important;
+    background: transparent!important;
+}
+
+body .ui-slider-horizontal .ui-slider-range-min {
+    background: #e03a6c;
+    border-radius: 0;
+}
+
+.time-slider-text {
+    position: absolute;
+    bottom: 50px;
+    left: -44px;
+    width: 300px;
+    padding: 16px;
+    background: #fff;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.4);
+}
+
+.time-slider-text:after {
+    position: absolute;
+    bottom: -32px;
+    left: 40px;
+    width: 32px;
+    height: 32px;
+    background-image: url('../img/triangle.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    content: '';
+}
+
+#time-slider-year {
+    font-family: 'Fira Sans';
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 1;
+    color: #000;
+}
+
+.time-slider-slr-pre {
+    font-family: 'Merriweather';
+    font-size: 14px;
+    line-height: 18px;
+    color: #e03a6c;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+#time-slider-slr-nr {
+    font-family: 'Fira Sans';
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 18px;
+    display: inline-block;
+    vertical-align: top;
+    top: 4px;
 }
 
 
