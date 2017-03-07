@@ -29,29 +29,51 @@ App.prototype.domActions = function() {
 };
 
 
-// chapters
+// navigation
 
-App.prototype.goto = function(chapter, fast) {
-    var timeout = 0;
+App.prototype.openChapter = function(chapter, fast) {
+    var self = this,
+        timeout = 0;
     if (this.status.intro) {
-        this.collapse();
+        this.collapseMenu();
         timeout = 1000;
     }
     if (fast) {
         timeout = 0;
     }
     setTimeout(function(){
-        $('.chapter').each(function(){
-            if ($(this).attr('id') === 'chapter-' + chapter) {
-                $(this).addClass('current-chapter');
-            } else {
-                $(this).removeClass('current-chapter');
-            }
-        })
+        self._setChapter(chapter);
     }, timeout);
 };
 
-App.prototype.collapse = function() {
+App.prototype._setChapter = function(chapter) {
+    $('.chapter').each(function(){
+        if ($(this).attr('id') === 'chapter-' + chapter) {
+            $(this).addClass('current-chapter');
+        } else {
+            $(this).removeClass('current-chapter');
+        }
+    });
+
+    $('.menu-button').each(function(){
+        if ($(this).attr('id') === 'menu-' + chapter) {
+            $(this).addClass('current-menu');
+        } else {
+            $(this).removeClass('current-menu');
+        }
+    })
+};
+
+App.prototype.jumpToTile = function(tileNr) {
+    var self = this;
+    this._setChapter('cases');
+    setTimeout(function(){
+        self.slider.slideTo(tileNr);
+    }, 500);
+
+};
+
+App.prototype.collapseMenu = function() {
     var introText = $('#intro-text');
     introText.css('height', 0);
     setTimeout(function(){

@@ -9,11 +9,16 @@ function Slider(app) {
 
 Slider.prototype.init = function() {
     this.element.css('width', ((this.width * this.length) + this.element.css('padding-left')));
-    this.goto();
+    this._moveSlider();
     $('.slider-button-prev').hide();
 };
 
-Slider.prototype.goto = function() {
+Slider.prototype.slideTo = function(n) {
+    this.current = n;
+    this._moveSlider();
+};
+
+Slider.prototype._moveSlider = function() {
     var self = this,
         left = ' -' + (this.current * this.width) + 'px';
     this.element.css('left', left);
@@ -43,7 +48,7 @@ Slider.prototype.next = function() {
     if (this.current >= this.length) {
         this.current = 0;
     }
-    this.goto();
+    this._moveSlider();
 };
 
 Slider.prototype.prev = function() {
@@ -51,5 +56,5 @@ Slider.prototype.prev = function() {
     if (this.current < 0) {
         this.current = this.length - 1;
     }
-    this.goto();
+    this._moveSlider();
 };

@@ -27,10 +27,11 @@ body {
 
 #content {
     position: absolute;
-    left: 50px;
+    right: 0;
     top: 0;
-    width: calc(100% - 50px);
+    width: calc(100% - 300px);
     height: 100%;
+    overflow: hidden;
 }
 
 .chapter {
@@ -38,9 +39,11 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
+    overflow: auto;
     background: #fff;
     left: -100%;
     transition: all 0.5s ease;
+    padding: 80px;
 }
 
 .chapter.current-chapter {
@@ -49,13 +52,106 @@ body {
 
 
 
+/* story */
+
+.story {
+    max-width: 650px;
+}
+
+.story h2 {
+    font-family: 'Merriweather';
+    font-size: 26px;
+    line-height: 30px;
+}
+
+.story-intro {
+    font-size: 17px;
+    line-height: 25px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+
+.story-img-frame {
+    padding: 20px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
+.story-quote {
+    font-family: 'Merriweather';
+    font-size: 22px;
+    line-height: 26px;
+    padding: 10px 30px;
+    color: #e03a6c;
+    border-left: 4px solid #e03a6c;
+    margin: 40px 0;
+}
+
+.story img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.story-img-text {
+    font-size: 11px;
+    margin: 10px 0;
+}
+
+.story-tile-frame {
+    width: 500px;
+    border-left: 4px solid #e03a6c;
+    padding: 40px;
+    cursor: pointer;
+    background: #eee;
+}
+
+.story-tile-frame:hover h4 {
+    text-decoration: underline;
+}
+
+.story-tile-frame:hover .story-tile-button {
+    color: #e03a6c;
+}
+
+.story-file-text {
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+}
+
+.story-tile-image {
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+}
+
+.story-tile-frame h4 {
+    font-family: 'Merriweather';
+    font-weight: 400;
+    color: #e03a6c;
+}
+
+.story-tile-button {
+    display: inline-block;
+    margin-right: 4px;
+    width: 24px;
+    height: 24px;
+    padding: 5px 1px 3px 7px;
+    font-size: 12px;
+    line-height: 12px;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+}
 
 
 
 
 
 
-/* cases */
+    /* cases */
 
 .top {
     height: calc(100% - 110px);
@@ -107,7 +203,7 @@ body {
 
 #menu {
     position: fixed;
-    left: -0px;
+    left: 0;
     top: 0;
     width: 100%;
     height: 100%;
@@ -120,12 +216,12 @@ body {
 
 .active #menu {
     width: 300px;
-    left: -250px;
+    left: 0;
     background: #ddd;
 }
 
 #menu:hover {
-    left: 0;
+
 }
 
 #menu-container {
@@ -155,6 +251,7 @@ body {
     color: #e03a6c;
     padding: 0 20px;
     margin-top: 0;
+    font-weight: 400;
 }
 
 #intro-text {
@@ -175,7 +272,8 @@ body {
     transition: all 0.2s ease;
 }
 
-.menu-button:hover {
+.menu-button:hover,
+.menu-button.current-menu {
     background: #e03a6c;
 }
 
@@ -387,6 +485,7 @@ body .ui-slider-horizontal .ui-slider-range-min {
     display: inline-block;
     vertical-align: top;
     top: 4px;
+    color: #000;
 }
 
 .time-label {
@@ -399,6 +498,10 @@ body .ui-slider-horizontal .ui-slider-range-min {
     color: #e03a6c;
     padding: 5px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+.time-label.time-label-highlighted {
+    color: #fff;
 }
 
 .time-label:after {
@@ -427,8 +530,8 @@ body .ui-slider-horizontal .ui-slider-range-min {
 }
 
 .tile {
-    width: 500px;
-    padding: 10px 20px 40px 20px;
+    width: 850px;
+    padding: 10px 30px 40px 30px;
     float: left;
     color: #000;
     height: 100%;
@@ -442,7 +545,7 @@ body .ui-slider-horizontal .ui-slider-range-min {
     transition: all 0.5s ease;
 }
 
-.current .tile-head {
+.tile.current .tile-head {
     transform: scale(1);
 }
 
@@ -475,12 +578,20 @@ body .ui-slider-horizontal .ui-slider-range-min {
     transition: all 0.5s ease;
 }
 
-.current .tile-canvas {
+.tile.current .tile-canvas {
     transform: scale(1);
 }
 
 .tile-body {
     padding: 10px;
+    display: none;
+    max-width: 650px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.tile.current .tile-body {
+    display: block;
 }
 
 .tile-body h4 {
@@ -489,6 +600,7 @@ body .ui-slider-horizontal .ui-slider-range-min {
     margin: 20px 0 0 0;
     font-weight: 100;
     text-transform: uppercase;
+    text-align: center;
 }
 
 

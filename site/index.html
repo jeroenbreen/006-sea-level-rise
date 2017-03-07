@@ -31,21 +31,32 @@
     <div id="menu">
         <div id="menu-container">
             <div id="branding">
-                <h1>Sea Level Rise</h1>
-                <h2>An interactive
+                <h1>
+                    Sea Level Rise
+                </h1>
+                <h2>
+                    An interactive
                     infographic
                     about Climate
                     Change related
-                    effects.</h2>
+                    effects.
+                </h2>
             </div>
             <div id="intro-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fringilla pulvinar eros eget maximus. Morbi in bibendum ipsum, et tincidunt leo. Aliquam tristique ac sem sit amet aliquet. Duis ullamcorper ultricies ultrices.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Suspendisse fringilla pulvinar eros eget maximus. Morbi in
+                bibendum ipsum, et tincidunt leo. Aliquam tristique ac sem sit
+                amet aliquet. Duis ullamcorper ultricies ultrices.
                 <br><br>
-                Fusce molestie magna condimentum, efficitur enim quis, porta lectus. Morbi gravida lacinia posuere. Nam non ipsum ut mi congue consequat sed sed velit. Donec eu fringilla sapien. Curabitur auctor lacus eu erat posuere, in mollis ipsum iaculis. Aenean mi mauri.
+                Fusce molestie magna condimentum, efficitur enim quis, porta
+                lectus. Morbi gravida lacinia posuere. Nam non ipsum ut mi congue
+                consequat sed sed velit. Donec eu fringilla sapien. Curabitur
+                auctor lacus eu erat posuere, in mollis ipsum iaculis. Aenean
+                mi mauri.
 
             </div>
             <div id="buttons">
-                <div class="menu-button" onclick="app.goto('context')">
+                <div id="menu-context" class="menu-button" onclick="app.openChapter('context')">
                     <div class="menu-button-image">
                         <img src="img/menu/context.png">
                     </div>
@@ -60,7 +71,7 @@
                     </div>
                 </div>
 
-                <div class="menu-button" onclick="app.goto('causes')">
+                <div id="menu-causes" class="menu-button" onclick="app.openChapter('causes')">
                     <div class="menu-button-image">
                         <img src="img/menu/causes-and-effects.png">
                     </div>
@@ -75,7 +86,7 @@
                     </div>
                 </div>
 
-                <div class="menu-button" onclick="app.goto('cases')">
+                <div id="menu-cases" class="menu-button" onclick="app.openChapter('cases')">
                     <div class="menu-button-image">
                         <img src="img/menu/cases.png">
                     </div>
@@ -96,7 +107,91 @@
     <div id="content">
 
         <div id="chapter-context" class="chapter">
-            Hier het verhaal context
+            <div class="story">
+
+                <h2>Lorem ipsum</h2>
+                <div class="story-intro">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                    magna turpis, placerat ut volutpat sed, imperdiet id tortor.
+                    Nulla eros augue, tincidunt nec molestie vitae, consequat eget
+                    lacus. Maecenas iaculis neque ut odio egestas aliquam. Donec
+                    tempor metus arcu, a tincidunt diam ultrices id. Maecenas eget
+                    purus arcu. Nunc ac egestas ipsum. Aenean mollis ligula urna, in
+                    eleifend nunc ultrices non. Mauris et malesuada urna, vitae
+                    posuere ante. Sed eu elit tristique, euismod massa in, congue
+                    lacus. Etiam quis tortor dui. In nec nulla tortor.
+                </div>
+
+                <div class="story-img-frame">
+                    <img src="img/story/https_blueprint-api-production.s3.amazonaws.com_uploads_card_image_327294_eae1fa21-7f38-4197-81a7-1d518022b389.jpeg">
+                    <div class="story-img-text">
+                        Nam mollis sem id rhoncus fringilla. Sed sed elit sit amet mauris tempor sodales. Integer pellentesque lacus et ligula pharetra mollis.
+                    </div>
+                </div>
+
+                <h2>Maecenas iaculis neque ut odio</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                    magna turpis, placerat ut volutpat sed, imperdiet id tortor.
+                    Nulla eros augue, tincidunt nec molestie vitae, consequat eget
+                    lacus. Maecenas iaculis neque ut odio egestas aliquam. Donec
+                    tempor metus arcu, a tincidunt diam ultrices id. Maecenas eget
+                    purus arcu. Nunc ac egestas ipsum. Aenean mollis ligula urna, in
+                    eleifend nunc ultrices non. Mauris et malesuada urna, vitae
+                    posuere ante. Sed eu elit tristique, euismod massa in, congue
+                    lacus. Etiam quis tortor dui. In nec nulla tortor.
+                </p>
+
+                <div class="story-quote">
+                    "Maecenas iaculis neque ut odio egestas aliquam. Donec
+                    tempor metus arcu, a tincidunt diam ultrices id. Maecenas eget
+                    purus arcu. Nunc ac egestas ipsum. Aenean mollis ligula urna, in
+                    eleifend nunc ultrices non."
+                </div>
+
+                <div class="story-img-frame">
+                    <img src="img/story/ci_50942761_Medium.jpeg">
+                    <div class="story-img-text">
+                        Nam mollis sem id rhoncus fringilla. Sed sed elit sit amet mauris tempor sodales. Integer pellentesque lacus et ligula pharetra mollis.
+                    </div>
+                </div>
+
+                <h2>Dolor sit amet</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                    magna turpis, placerat ut volutpat sed.
+                </p>
+
+                <div class="story-tile-frame" onclick="app.jumpToTile(2)">
+                    <div class="story-file-text">
+                        <h4>
+                            "The Maledives, a generation devided by their roots and the threat of the water"
+                        </h4>
+                    </div>
+                    <div class="story-tile-image">
+                        <img src="img/maledives.png">
+                    </div>
+
+                    <div class="story-tile-footer">
+                        <div class="story-tile-button">►</div>
+                        Jump right to the story of <b>The Maledives</b>
+                    </div>
+                </div>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                    magna turpis, placerat ut volutpat sed, imperdiet id tortor.
+                    Nulla eros augue, tincidunt nec molestie vitae, consequat eget
+                    lacus. Maecenas iaculis neque ut odio egestas aliquam. Donec
+                    tempor metus arcu, a tincidunt diam ultrices id. Maecenas eget
+                    purus arcu. Nunc ac egestas ipsum. Aenean mollis ligula urna, in
+                    eleifend nunc ultrices non. Mauris et malesuada urna, vitae
+                    posuere ante. Sed eu elit tristique, euismod massa in, congue
+                    lacus. Etiam quis tortor dui. In nec nulla tortor.
+                </p>
+
+            </div>
+
         </div>
 
         <div id="chapter-causes" class="chapter">
@@ -178,7 +273,7 @@
                             <div class="time-label" style="left:calc(200% / 4 - 25px)">
                                 2100
                             </div>
-                            <div class="time-label" style="left:calc(117% / 4 - 25px)">
+                            <div class="time-label time-label-highlighted" style="left:calc(117% / 4 - 25px)">
                                 Today
                             </div>
                             <div class="time-label" style="left:-25px">

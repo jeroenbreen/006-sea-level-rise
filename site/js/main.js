@@ -7,7 +7,7 @@ $(window).ready(function(){
         metersDiv = $('#time-slider-slr-nr');
     window.app = new App();
 
-    app.goto('cases', true);
+    app.openChapter('context', true);
 
     $("#time-slider").slider({
         orientation: "horizontal",
