@@ -16,14 +16,34 @@ $(window).ready(function(){
         max: endYear,
         value: startYear,
         slide: function(event, ui){
-            updateSlider(ui.value);
+            updateTimeSlider(ui.value);
         },
         create: function(event, ui){
-            updateSlider(startYear);
+            updateTimeSlider(startYear);
         }
     });
 
-    function updateSlider(year) {
+    $("#carbon-slider").slider({
+        orientation: "horizontal",
+        range: "min",
+        min: 1870,
+        max: 2017,
+        value: 1870,
+        slide: function(event, ui){
+            $('#carbon-slider-year').html(ui.value);
+        },
+        create: function(event, ui){
+            $('#carbon-slider-year').html(1870);
+        }
+    });
+
+    function updateCarbonSlider(year) {
+        yearDiv.html(year);
+        metersDiv.html('+' + meters + 'm');
+        app.slide(yearToPercentage(year));
+    }
+
+    function updateTimeSlider(year) {
         var meters = yearToMeters(year);
         yearDiv.html(year);
         metersDiv.html('+' + meters + 'm');
