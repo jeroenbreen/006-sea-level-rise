@@ -20,6 +20,9 @@ function Tile(app, tileData, index) {
 }
 
 
+Tile.prototype = Object.create(_Controller.prototype);
+
+
 
 Tile.prototype.init = function(tileData) {
     var self = this;
@@ -30,9 +33,10 @@ Tile.prototype.init = function(tileData) {
 
 Tile.prototype.initModel = function() {
     this.engine = new BABYLON.Engine(this.canvas, true);
+
     this.scene = this.getScene();
-    this.light = this.getLight();
-    this.camera = this.getCamera();
+    this.light = this.getLight(new BABYLON.Vector3(-6, -10, 10));
+    this.camera = this.getCamera(-Math.PI/2.5, Math.PI/5, 17, BABYLON.Vector3.Zero());
     this.tile = this.getTile();
     this.land = this.getLand();
     this.water = this.getWater();
@@ -70,31 +74,9 @@ Tile.prototype.create = function() {
     this.canvas = canvas[0];
 };
 
-Tile.prototype.run = function() {
-    var self = this;
-    this.engine.runRenderLoop(function() {
-        self.scene.render();
-    });
-};
-
-Tile.prototype.stop = function() {
-    this.engine.stopRenderLoop();
-};
-
 
 // creation
 
-Tile.prototype.getScene = function() {
-    var scene = new BABYLON.Scene(this.engine);
-    scene.autoClear = false;
-    return scene;
-};
-
-Tile.prototype.getCamera = function() {
-    var camera = new BABYLON.ArcRotateCamera('Camera', -Math.PI/2.5, Math.PI/5, 17, BABYLON.Vector3.Zero(), this.scene);
-    //camera.attachControl(this.canvas, false);
-    return camera
-};
 
 Tile.prototype.setCamera = function(setting) {
     if (setting) {
@@ -106,12 +88,6 @@ Tile.prototype.setCamera = function(setting) {
         this.camera.beta = Math.PI/5;
         this.camera.radius = 17;
     }
-};
-
-Tile.prototype.getLight = function() {
-    var light = new BABYLON.DirectionalLight('ligth 1', new BABYLON.Vector3(-6, -10, 10), this.scene);
-    light.intensity = 1;
-    return light;
 };
 
 Tile.prototype.getTile = function() {
@@ -165,13 +141,6 @@ Tile.prototype.getWater = function() {
     material.checkOnlyOnce = true;
     water.material = material;
     return water;
-};
-
-Tile.prototype.getShadowGenerator = function() {
-    var shadowGenerator = new BABYLON.ShadowGenerator(1024, this.light);
-    shadowGenerator.useBlurVarianceShadowMap = true;
-    shadowGenerator.blurScale = 20;
-    return shadowGenerator;
 };
 
 

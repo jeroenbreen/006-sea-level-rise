@@ -62,6 +62,8 @@ body {
     font-family: 'Merriweather';
     font-size: 26px;
     line-height: 30px;
+    font-weight: 300;
+    margin-top: 100px;
 }
 
 .story-intro {
@@ -257,10 +259,10 @@ body .story-graph-container .ui-slider-handle {
 
 #branding h1 {
     font-family: 'Fira Sans';
-    font-size: 48px;
-    line-height: 42px;
+    font-size: 84px;
+    line-height: 72px;
     text-transform: uppercase;
-    font-weight: 900;
+    font-weight: 100;
     padding: 0 50px;
     margin-bottom: 16px;
 }
@@ -269,10 +271,10 @@ body .story-graph-container .ui-slider-handle {
     font-family: 'Merriweather';
     font-size: 24px;
     line-height: 27px;
-    color: #e03a6c;
+    color: #333;
     padding: 0 20px;
     margin-top: 0;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 #intro-text {
@@ -285,17 +287,20 @@ body .story-graph-container .ui-slider-handle {
 
 .menu-button {
     padding: 10px;
-    background: #000;
-    color: #fff;
-    margin-bottom: 6px;
+    color: #333;
     cursor: pointer;
     height: 110px;
     transition: all 0.2s ease;
+    border-top: 1px solid #333;
+}
+
+.menu-button:last-child {
+    border-bottom: 1px solid #333;
 }
 
 .menu-button:hover,
 .menu-button.current-menu {
-    background: #e03a6c;
+    background: #fff;
 }
 
 .menu-button-image {
@@ -322,7 +327,7 @@ body .story-graph-container .ui-slider-handle {
     font-size: 20px;
     line-height: 24px;
     margin: 2px 0 10px 0;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 .menu-button-goto {
@@ -487,7 +492,7 @@ body .ui-slider-horizontal .ui-slider-range-min {
 
 #time-slider-year {
     font-family: 'Fira Sans';
-    font-weight: 900;
+    font-weight: 100;
     font-size: 48px;
     line-height: 1;
     color: #000;
@@ -722,5 +727,9 @@ body .ui-slider-horizontal .ui-slider-range-min {
     width: 100px;
     background-image: url('../img/scrim/scroller-scrim-right.png');
 }
+
+
+
+/* ppm graph */
 
 
