@@ -10,6 +10,9 @@ function App() {
         intro: true,
         playing: true
     };
+    this.graphs = {
+        ppm: null
+    }
     this.init();
 }
 
@@ -21,6 +24,7 @@ App.prototype.init = function() {
         this.tiles.push(tile);
     }
     this.slider = new Slider(this);
+    this.graphs.ppm = new PpmGraph(document.getElementById('ppm-graph'));
 };
 
 App.prototype.domActions = function() {

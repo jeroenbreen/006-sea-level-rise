@@ -22,6 +22,10 @@ body {
     -moz-box-sizing: border-box;
 }
 
+canvas {
+    outline: none;
+}
+
 
 /* architecture */
 
@@ -153,10 +157,8 @@ body {
 /* graph */
 
 .story-graph {
-    height: 400px;
-    border: 1px solid #000;
     margin-bottom: 40px;
-    padding: 30px;
+    position: relative;
 }
 
 #carbon-slider {
@@ -602,7 +604,6 @@ body .ui-slider-horizontal .ui-slider-range-min {
     width: 100%;
     height: 460px;
     touch-action: none;
-    outline: none;
     background: transparent;
     transform: scale(0.5);
     transition: all 0.5s ease;
@@ -732,4 +733,37 @@ body .ui-slider-horizontal .ui-slider-range-min {
 
 /* ppm graph */
 
+#ppm-graph {
+    width: 400px;
+    height: 400px;
+}
 
+
+/* helper */
+
+.helper {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    padding: 10px 40px 10px 10px;
+    background: #fde200;
+    box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+}
+
+.helper-close {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    background: #fff;
+    font-size: 20px;
+    line-height: 20px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: #555;
+    text-align: center;
+}
+
+.helper-close:hover {
+    color: #000;
+}

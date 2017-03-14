@@ -54,9 +54,18 @@ $(window).ready(function(){
         return (year - minYear) / (endYear - startYear);
     }
 
+    listenHelpers();
+
 });
 
+function listenHelpers() {
+    $('.helper-close').click(function(){
 
+        var helper = $(this).parent();
+        helper.fadeOut(100);
+
+    });
+}
 
 
 function yearToMeters(year) {

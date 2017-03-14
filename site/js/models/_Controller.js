@@ -21,18 +21,21 @@ _Controller.prototype.stop = function() {
 
 _Controller.prototype.getScene = function() {
     var scene = new BABYLON.Scene(this.engine);
-    scene.autoClear = false;
+    scene.clearColor = new BABYLON.Color4(0,0,0,0);
     return scene;
 };
 
-_Controller.prototype.getCamera = function(x, y, z, vector) {
-    return new BABYLON.ArcRotateCamera('Camera', x, y, z, vector, this.scene);
-    //camera.attachControl(this.canvas, false);
+_Controller.prototype.getCamera = function(x, y, z, vector, attach) {
+    var camera = new BABYLON.ArcRotateCamera('Camera', x, y, z, vector, this.scene);
+    if (attach) {
+        camera.attachControl(this.canvas, false);
+    }
+    return camera;
 };
 
-_Controller.prototype.getLight = function(vector) {
+_Controller.prototype.getLight = function(vector, intensity) {
     var light = new BABYLON.DirectionalLight('ligth 1', vector, this.scene);
-    light.intensity = 1;
+    light.intensity = intensity;
     return light;
 };
 

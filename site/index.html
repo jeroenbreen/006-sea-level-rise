@@ -24,6 +24,7 @@
         <script src="js/models/Tile.js"></script>
         <script src="js/models/City.js"></script>
         <script src="js/models/Slider.js"></script>
+        <script src="js/models/PpmGraph.js"></script>
     </head>
 
     <body>
@@ -144,7 +145,14 @@
 
                 <div class="story-graph-container">
                     <div class="story-graph">
-                        Hier een of andere grafiek. CO2 ofzo.
+                        <canvas id="ppm-graph"></canvas>
+                        <div class="helper">
+                            <div class="helper-text">
+                                Drag to rotate planet Earth.<br>
+                                And use time slider to see effects on CO2 levels.
+                            </div>
+                            <div class="helper-close">×</div>
+                        </div>
                     </div>
                     <div id="carbon-slider">
                         <div class="ui-slider-handle">
