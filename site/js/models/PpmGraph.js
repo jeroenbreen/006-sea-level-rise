@@ -22,7 +22,7 @@ function PpmGraph(canvas) {
 PpmGraph.prototype = Object.create(_Controller.prototype);
 
 PpmGraph.prototype.init = function() {
-    var image = 'img/data/co2-2007-02.jpeg';
+    var image = 'img/data/co2/co2-2007-02.jpeg';
 
     this.engine = new BABYLON.Engine(this.canvas, true);
     this.scene = this.getScene();

@@ -1,4 +1,4 @@
-function Tile(app, tileData, index) {
+function Tile(app, tileData, index, single, parentElement) {
     this.app = app;
     this.data = tileData;
 
@@ -13,8 +13,9 @@ function Tile(app, tileData, index) {
     this.material = null;
     this.water = null;
     this.shadowGenerator = null;
-
+    this.single = single;
     this.cities = [];
+    this.parentElement = parentElement;
 
     this.init(tileData);
 }
@@ -29,6 +30,12 @@ Tile.prototype.init = function(tileData) {
     this.data.current = this.data.min;
     this.create();
     this.initModel();
+
+    if (this.single) {
+        setTimeout((function(){
+            self.stop();
+        }), 10000)
+    }
 };
 
 Tile.prototype.initModel = function() {
@@ -60,17 +67,25 @@ Tile.prototype.initCities = function(tileData) {
 
 Tile.prototype.create = function() {
     var tile = $('<div class="tile" id="tile-' + this.index + '"></div>'),
-        tileHead = $('<div class="tile-head"></div>'),
-        title = $('<h2>' + this.data.title + '</h2>'),
-        subtitle = $('<h3>' + this.data.subtitle + '</h3>'),
+        tileHead,
+        title,
+        subtitle,
         canvas = $('<canvas class="tile-canvas" id="tile-' + this.data.title.toLowerCase() + '"></canvas>'),
-        tileBody = $('<div class="tile-body">' + this.data.text + '</div>');
-    tileHead.append(title);
-    tileHead.append(subtitle);
-    tile.append(tileHead);
+        tileBody;
+    if (!this.single) {
+        tileHead = $('<div class="tile-head"></div>');
+        title = $('<h2>' + this.data.title + '</h2>');
+        subtitle = $('<h3>' + this.data.subtitle + '</h3>');
+        tileHead.append(title);
+        tileHead.append(subtitle);
+        tile.append(tileHead);
+    }
     tile.append(canvas);
-    tile.append(tileBody);
-    $('#tiles').append(tile);
+    if (!this.single) {
+        tileBody = $('<div class="tile-body">' + this.data.text + '</div>');
+        tile.append(tileBody);
+    }
+    this.parentElement.append(tile);
     this.canvas = canvas[0];
 };
 

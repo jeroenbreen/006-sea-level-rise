@@ -11,8 +11,9 @@ function App() {
         playing: true
     };
     this.graphs = {
-        ppm: null
-    }
+        ppm: null,
+        greenland: null
+    };
     this.init();
 }
 
@@ -20,11 +21,12 @@ App.prototype.init = function() {
     var self = this;
     this.domActions();
     for (var i = 0, l = tiles.length; i < l; i++) {
-        var tile = new Tile(this, tiles[i], i);
+        var tile = new Tile(this, tiles[i], i, false, $('#tiles'));
         this.tiles.push(tile);
     }
     this.slider = new Slider(this);
     this.graphs.ppm = new PpmGraph(document.getElementById('ppm-graph'));
+    //this.graphs.greenland = new Tile(this, greenland, 999, true, $('#tile-greenland'))
 };
 
 App.prototype.domActions = function() {

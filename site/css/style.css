@@ -58,25 +58,127 @@ canvas {
 
 /* story */
 
+
+
 .story {
     max-width: 650px;
 }
 
-.story h2 {
-    font-family: 'Merriweather';
-    font-size: 26px;
-    line-height: 30px;
-    font-weight: 300;
-    margin-top: 100px;
+
+
+.story-header {
+    text-align: center;
+    width: calc(100% + 160px);
+    margin-left: -80px;
+}
+
+.story-header-image {
+    margin-top: 20px;
+    position: relative;
+}
+
+.story-header-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.story-header h1 {
+    font-family: 'Fira Sans';
+    font-size: 48px;
+    line-height: 44px;
+    font-weight: 100;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.story-header-image-text {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 100%;
+}
+
+.story-header h2 {
+    font-family: 'Fira Sans';
+    font-size: 48px;
+    line-height: 48px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+    background: rgba(255,255,255,0.8);
+    padding: 20px;
+    margin: 0;
 }
 
 .story-intro {
     font-size: 17px;
     line-height: 25px;
-    font-weight: 700;
     margin-bottom: 50px;
+    padding: 0 60px;
 }
 
+.story-index {
+    background: #333;
+    padding: 20px 20px 50px 80px;
+    text-align: left;
+    color: #fff;
+}
+
+.story-index h3 {
+    font-family: 'Fira Sans';
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.story-index ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.story-index ul li a {
+    font-size: 12px;
+    color: #fff;
+}
+
+.story-chapter {
+    margin-top: 80px;
+}
+
+.story-chapter h2 {
+    font-size: 32px;
+    line-height: 32px;
+}
+
+.story-references {
+    border-left: 1px solid #e03a6c;
+    margin: 40px 0;
+    padding: 10px 30px;
+}
+
+.story-references h3 {
+    font-family: 'Fira Sans';
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 0;
+    color: #e03a6c;
+}
+
+.story-references ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.story-references ul li a {
+    font-size: 12px;
+    color: #e03a6c;
+}
 
 .story-img-frame {
     padding: 20px;
@@ -236,7 +338,7 @@ body .story-graph-container .ui-slider-handle {
     background: #fff;
     z-index: 100000;
     box-shadow: 5px 0 5px rgba(0,0,0,0.4);
-    transition: all 0.5s ease;
+    transition: all 0s ease;
 }
 
 .active #menu {
@@ -486,7 +588,7 @@ body .ui-slider-horizontal .ui-slider-range-min {
     left: 40px;
     width: 32px;
     height: 32px;
-    background-image: url('../img/triangle.png');
+    background-image: url('../img/icons/triangle.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     content: '';
@@ -542,7 +644,7 @@ body .ui-slider-horizontal .ui-slider-range-min {
     left: 20px;
     width: 20px;
     height: 12px;
-    background-image: url('../img/triangle2.png');
+    background-image: url('../img/icons/triangle2.png');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     content: '';
@@ -667,6 +769,27 @@ body .ui-slider-horizontal .ui-slider-range-min {
 .minimized .tile-canvas {
     margin-top: -40px;
 }
+
+
+/* single tile */
+
+.single-tile-container {
+    width: 500px;
+    height: 460px;
+}
+
+.single-tile-container .tile {
+    float: none;
+    padding: 0;
+    width: 100%;
+    margin-top: -80px;
+}
+
+.single-tile-container .tile-canvas {
+    transform: scale(1);
+}
+
+
 
 
 
