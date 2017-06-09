@@ -24,9 +24,10 @@
         <!-- end less -->
 
         <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">
+        <!--<link rel="stylesheet" type="text/css" href="assets/jquery-ui/jquery-ui.min.css">-->
 
 
         <!-- assets -->
@@ -41,6 +42,7 @@
         <script src="js/models/tiles/Tile.js"></script>
         <script src="js/models/tiles/City.js"></script>
         <script src="js/models/tiles/Slider.js"></script>
+        <script src="js/models/tiles/Carrousel.js"></script>
 
 
         <script src="js/content/tiles.js"></script>

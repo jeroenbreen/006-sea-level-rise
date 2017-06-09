@@ -1,60 +1,69 @@
-function Slider(app) {
+function Slider(app, tile) {
     this.app = app;
-    this.element = $('#tiles');
-    this.width = $('.tile').outerWidth() + parseInt($('.tile').css('margin-right'));
-    this.length = this.app.tiles.length;
-    this.current = 0;
+    this.tile = tile;
+    this.element = {
+        main: null,
+        wrapper: null,
+        axis: null
+    };
     this.init();
 }
 
 Slider.prototype.init = function() {
-    this.element.css('width', ((this.width * this.length) + this.element.css('padding-left')));
-    this._moveSlider();
-    $('.slider-button-prev').hide();
+    this.create();
+    this.addListeners();
 };
 
-Slider.prototype.slideTo = function(n) {
-    this.current = n;
-    this._moveSlider();
+Slider.prototype.create = function() {
+    var subdivision = 12, ratio = this.getRatio();
+    this.element.main = $('<div class="tile-slider"></div>');
+    this.element.wrapper = $('<div class="tile-slider-wrapper"></div>');
+    this.element.axis = $('<div class="tile-slider-axis"></div>');
+
+    this.element.axis.css('width', (ratio * 100) + '%');
+
+    this.element.wrapper.append(this.element.axis);
+    this.element.main.append(this.element.wrapper);
+
+    for (var i = 0, l = subdivision + 1; i < l; i++) {
+        var perc = (i / (l - 1)) * 100,
+            year = (settings.tile.slider.year.long.max - settings.tile.slider.year.long.min) / subdivision * i + settings.tile.slider.year.long.min,
+            div = $('<div class="slider-station" style="left: ' + perc + '%;"><div class="slider-station-label">' + year + '</div></div></div>');
+        this.element.axis.append(div);
+    }
+
+
+    this.element.main.insertBefore(this.tile.element.tileLeft.find('.tile-canvas-tools'));
 };
 
-Slider.prototype._moveSlider = function() {
-    var self = this,
-        left = ' -' + (this.current * this.width) + 'px';
-    this.element.css('left', left);
-    $('.tile').each(function(){
-        if (this === $('#tile-' + self.current)[0]) {
-            $(this).addClass('current');
-        } else {
-            $(this).removeClass('current');
+Slider.prototype.addListeners = function() {
+    var self = this;
+
+    this.element.main.slider({
+        orientation: 'horizontal',
+        min: settings.tile.slider.year.short.min,
+        max: settings.tile.slider.year.short.max,
+        value: settings.tile.slider.year.start,
+        slide: function(event, ui){
+            self.tile.update(self.yearToPercentage(ui.value), ui.value);
+        },
+        create: function(event, ui){
+            self.tile.update(self.yearToPercentage(settings.tile.slider.year.start), settings.tile.slider.year.start);
         }
     });
-
-    if (this.current === 0) {
-        $('.slider-button-prev').fadeOut(200);
-    } else {
-        $('.slider-button-prev').fadeIn(200);
-    }
-
-    if (this.current === (this.length - 1)) {
-        $('.slider-button-next').fadeOut(200);
-    } else {
-        $('.slider-button-next').fadeIn(200);
-    }
 };
 
-Slider.prototype.next = function() {
-    this.current++;
-    if (this.current >= this.length) {
-        this.current = 0;
-    }
-    this._moveSlider();
+
+// helpers
+
+Slider.prototype.yearToPercentage = function(year) {
+    return (Number(year) - settings.tile.slider.year.short.min) / (settings.tile.slider.year.short.max - settings.tile.slider.year.short.min);
 };
 
-Slider.prototype.prev = function() {
-    this.current--;
-    if (this.current < 0) {
-        this.current = this.length - 1;
-    }
-    this._moveSlider();
+Slider.prototype.getRatio = function() {
+    return (settings.tile.slider.year.long.max - settings.tile.slider.year.long.min) / (settings.tile.slider.year.short.max - settings.tile.slider.year.short.min);
 };
+
+
+
+

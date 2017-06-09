@@ -1,6 +1,20 @@
 var settings = {
     tile: {
-        size: 10
+        size: 10,
+
+        slider: {
+            year: {
+                start: 2017,
+                short: {
+                    min: 2000,
+                    max: 2100
+                },
+                long: {
+                    min: 2000,
+                    max: 2300
+                }
+            }
+        }
     },
     city: {
         size: 0.3,
@@ -13,7 +27,7 @@ var settings = {
     },
     collapse: {
         menu: 50,
-        closed: 50,
+        closed: 36,
         n: 3
     }
 };

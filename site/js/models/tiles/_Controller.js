@@ -4,15 +4,26 @@ function _Controller() {}
 
 // controls
 
-_Controller.prototype.run = function() {
+_Controller.prototype.play = function() {
     var self = this;
+    this.status.playing = true;
     this.engine.runRenderLoop(function() {
         self.scene.render();
     });
 };
 
 _Controller.prototype.stop = function() {
+    this.status.playing = false;
     this.engine.stopRenderLoop();
+};
+
+
+
+_Controller.prototype.delayStop = function() {
+    var self = this;
+    this.timer = setTimeout(function(){
+        self.stop();
+    }, 500)
 };
 
 

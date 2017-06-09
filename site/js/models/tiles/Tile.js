@@ -1,9 +1,19 @@
 function Tile(app, tileData, index, single, parentElement) {
     this.app = app;
-    this.data = tileData;
 
+    // settings
+    this.data = tileData;
     this.index = index;
-    this.canvas = null;
+    this.timer = null;
+    this.status = {
+        playing: false
+    };
+    this.view = {
+        texture: true,
+        camera: false
+    };
+
+    // babylon
     this.engine = null;
     this.scene = null;
     this.light = null;
@@ -15,7 +25,34 @@ function Tile(app, tileData, index, single, parentElement) {
     this.shadowGenerator = null;
     this.single = single;
     this.cities = [];
+
+    // dom
     this.parentElement = parentElement;
+    this.element = {
+        tileLeft: null,
+        status: {
+            year: null,
+            meters: null
+        },
+        tools: {
+            slider : {
+                shortTerm: null,
+                longTerm: null
+            },
+            camera: {
+                ortho: null,
+                perspective: null
+            },
+            texture: {
+                full: null,
+                mono: null
+            }
+        }
+    };
+    this.canvas = null;
+
+    // sub modules
+    this.slider = null;
 
     this.init(tileData);
 }
@@ -26,16 +63,13 @@ Tile.prototype = Object.create(_Controller.prototype);
 
 
 Tile.prototype.init = function(tileData) {
-    var self = this;
     this.data.current = this.data.min;
     this.create();
+    this.addListeners();
     this.initModel();
-
-    if (this.single) {
-        setTimeout((function(){
-            self.stop();
-        }), 10000)
-    }
+    this.slider = new Slider(this.app, this);
+    this.play();
+    this.delayStop();
 };
 
 Tile.prototype.initModel = function() {
@@ -54,7 +88,6 @@ Tile.prototype.initModel = function() {
     //     self.animate();
     // });
     this.updateWater();
-    this.run();
 
 };
 
@@ -66,44 +99,76 @@ Tile.prototype.initCities = function(tileData) {
 };
 
 Tile.prototype.create = function() {
-    var tile = $('<div class="tile" id="tile-' + this.index + '"></div>'),
-        tileHead,
-        title,
-        subtitle,
-        canvas = $('<canvas class="tile-canvas" id="tile-' + this.data.title.toLowerCase() + '"></canvas>'),
-        tileBody;
-    if (!this.single) {
-        tileHead = $('<div class="tile-head"></div>');
-        title = $('<h2>' + this.data.title + '</h2>');
-        subtitle = $('<h3>' + this.data.subtitle + '</h3>');
-        tileHead.append(title);
-        tileHead.append(subtitle);
-        tile.append(tileHead);
-    }
-    tile.append(canvas);
-    if (!this.single) {
-        tileBody = $('<div class="tile-body">' + this.data.text + '</div>');
-        tile.append(tileBody);
-    }
+    var tile, tileRight, canvas, status, statusLocation, statusLabel,
+        canvasTools, sliderTools, cameraTools, textureTools, tileHead, location, title,
+        tileInfo, tileStory;
+
+    tile = $('<div class="tile" id="tile-' + this.index + '"></div>');
+    this.element.tileLeft = $('<div class="tile-left"></div>');
+    tileRight = $('<div class="tile-right"></div>');
+    status = $('<div class="tile-status"></div>');
+    statusLocation = $('<div class="tile-status-location">' + this.data.location + '</div>');
+    statusLabel = $('<div class="tile-status-label">Sea Level Rise</div>');
+    this.element.status.year = $('<div class="tile-status-year"></div>');
+    this.element.status.meters = $('<div class="tile-status-meters"></div>');
+    canvas = $('<canvas class="tile-canvas" id="tile-' + this.data.title.toLowerCase() + '"></canvas>');
+    canvasTools = $('<div class="tile-canvas-tools"></div>');
+    sliderTools = $('<div class="tile-canvas-tools-set"><div class="tile-canvas-tools-set-label">Long-term / Short-term</div></div>');
+    this.element.tools.slider.shortTerm = $('<div></div>');
+    this.element.tools.slider.longTerm = $('<div></div>');
+
+    cameraTools = $('<div class="tile-canvas-tools-set"><div class="tile-canvas-tools-set-label">Camera</div></div>');
+    this.element.tools.camera.ortho = $('<div class="tile-canvas-tool-icon tile-canvas-tool-icon--ortho"></div>');
+    this.element.tools.camera.perspective = $('<div class="tile-canvas-tool-icon tile-canvas-tool-icon--active tile-canvas-tool-icon--perspective"></div>');
+    textureTools = $('<div class="tile-canvas-tools-set"><div class="tile-canvas-tools-set-label">Texture</div></div>');
+    this.element.tools.texture.full = $('<div class="tile-canvas-tool-icon tile-canvas-tool-icon--active tile-canvas-tool-icon--texture-full"></div>');
+    this.element.tools.texture.mono = $('<div class="tile-canvas-tool-icon tile-canvas-tool-icon--texture-mono"></div>');
+
+    tileHead = $('<div class="tile-head"></div>');
+    location = $('<h2>' + this.data.location + '</h2>');
+    title = $('<h3>' + this.data.title + '</h3>');
+    tileInfo = $('<div class="tile-info"></div>');
+    tileStory= $('<div class="tile-story">' + this.data.text + '</div>');
+
+    // assembly
+    tile.append(this.element.tileLeft).append(tileRight);
+    tileHead.append(location).append(title);
+    status.append(statusLocation).append(this.element.status.year).append(statusLabel).append(this.element.status.meters);
+    this.element.tileLeft.append(canvas).append(canvasTools).append(status);
+    canvasTools.append(sliderTools).append(cameraTools).append(textureTools);
+    sliderTools.append(this.element.tools.slider.shortTerm).append(this.element.tools.slider.longTerm);
+
+    cameraTools.append(this.element.tools.camera.ortho).append(this.element.tools.camera.perspective);
+    textureTools.append(this.element.tools.texture.full).append(this.element.tools.texture.mono);
+    tileRight.append(tileHead).append(tileInfo).append(tileStory);
+
+
+
+    // finishing
+    tile.css('width', this.parentElement.parent().outerWidth());
     this.parentElement.append(tile);
     this.canvas = canvas[0];
 };
 
+Tile.prototype.addListeners = function() {
+    var self = this;
 
-// creation
-
-
-Tile.prototype.setCamera = function(setting) {
-    if (setting) {
-        this.camera.alpha = -Math.PI/2;
-        this.camera.beta = 0;
-        this.camera.radius = 12;
-    } else {
-        this.camera.alpha = -Math.PI/2.5;
-        this.camera.beta = Math.PI/5;
-        this.camera.radius = 17;
-    }
+    this.element.tools.camera.ortho.click(function(){
+        self.setCamera(true);
+    });
+    this.element.tools.camera.perspective.click(function(){
+        self.setCamera(false);
+    });
+    this.element.tools.texture.full.click(function(){
+        self.setTexture(true);
+    });
+    this.element.tools.texture.mono.click(function(){
+        self.setTexture(false);
+    });
 };
+
+
+// creation / Babylon
 
 Tile.prototype.getTile = function() {
     var material = new BABYLON.StandardMaterial("material tile", this.scene),
@@ -163,9 +228,16 @@ Tile.prototype.getWater = function() {
 
 // animation
 
-Tile.prototype.slide = function(value) {
-    this.data.current = (this.data.max - this.data.min) * (value) + this.data.min;
+Tile.prototype.update = function(percentage, year) {
+    var meters = this.yearToMeters(year);
+    if (!this.status.playing) {
+        this.play();
+    }
+    this.data.current = (this.data.max - this.data.min) * percentage + this.data.min;
     this.updateWater();
+    this.delayStop();
+    this.element.status.year.html(year);
+    this.element.status.meters.html(meters + 'm');
 };
 
 Tile.prototype.updateWater = function() {
@@ -175,19 +247,53 @@ Tile.prototype.updateWater = function() {
 
 
 
-// styling
 
-Tile.prototype.setView = function(setting) {
-    if (setting) {
-        this.land.material = this.material;
 
+// resize
+
+Tile.prototype.resize = function() {
+    $(this.canvas).css('height', $(this.canvas).outerWidth());
+};
+
+
+
+// settings
+
+Tile.prototype.setCamera = function(setting) {
+    this.view.camera = setting;
+    this.play();
+    if (this.view.camera) {
+        this.element.tools.camera.ortho.addClass('tile-canvas-tool-icon--active');
+        this.element.tools.camera.perspective.removeClass('tile-canvas-tool-icon--active');
+        this.camera.alpha = -Math.PI/2;
+        this.camera.beta = 0;
+        this.camera.radius = 12;
     } else {
+        this.element.tools.camera.perspective.addClass('tile-canvas-tool-icon--active');
+        this.element.tools.camera.ortho.removeClass('tile-canvas-tool-icon--active');
+        this.camera.alpha = -Math.PI/2.5;
+        this.camera.beta = Math.PI/5;
+        this.camera.radius = 17;
+    }
+    this.delayStop();
+};
+
+Tile.prototype.setTexture = function(setting) {
+    this.view.texture = setting;
+    this.play();
+    if (this.view.texture) {
+        this.element.tools.texture.full.addClass('tile-canvas-tool-icon--active');
+        this.element.tools.texture.mono.removeClass('tile-canvas-tool-icon--active');
+        this.land.material = this.material;
+    } else {
+        this.element.tools.texture.mono.addClass('tile-canvas-tool-icon--active');
+        this.element.tools.texture.full.removeClass('tile-canvas-tool-icon--active');
         var color = hexToRgb(settings.color.land),
             material = new BABYLON.StandardMaterial("material land", this.scene);
         material.diffuseColor = new BABYLON.Color3(color[0],color[1],color[2]);
         this.land.material = material;
-
     }
+    this.delayStop();
 };
 
 Tile.prototype.setColor = function(type, color) {
@@ -195,8 +301,10 @@ Tile.prototype.setColor = function(type, color) {
 };
 
 
-// resize
 
-Tile.prototype.resize = function() {
-    $(this.canvas).css('height', $(this.canvas).outerWidth());
+// helpers
+
+Tile.prototype.yearToMeters = function(year) {
+    var startYear = 1900;
+    return (Math.pow((year - startYear), 4.5) / 25000000000).toFixed(2);
 };
