@@ -1,0 +1,42 @@
+.collapse {
+
+    .collapse-body {
+        overflow: auto;
+        transition: all 0.3s ease;
+        position: relative;
+
+        &:after {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            content: '';
+            top: -10px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    .collapse-head {
+        height: 50px;
+        text-align: center;
+        background: @grey-light;
+        border-bottom: 1px solid @grey-dark;
+        padding-top: 11px;
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+
+        &:hover {
+            background: #fff;
+        }
+    }
+
+    &.collapse--open {
+
+        .collapse-head {
+            background: #fff;
+            cursor: default;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+    }
+}

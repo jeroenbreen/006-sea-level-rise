@@ -4,15 +4,12 @@ function App() {
         camera: false
     };
     this.tiles = [];
+    this.collapses = [];
     this.slider = null;
     this.timer = null;
     this.status = {
         intro: true,
         playing: true
-    };
-    this.graphs = {
-        ppm: null,
-        greenland: null
     };
     this.init();
 }
@@ -25,8 +22,15 @@ App.prototype.init = function() {
         this.tiles.push(tile);
     }
     this.slider = new Slider(this);
-    this.graphs.ppm = new PpmGraph(document.getElementById('ppm-graph'));
-    //this.graphs.greenland = new Tile(this, greenland, 999, true, $('#tile-greenland'))
+    this.initCollapses();
+};
+
+App.prototype.initCollapses = function() {
+    var self = this;
+    $('.collapse').each(function(){
+        var collapse = new Collapse(self, $(this));
+        self.collapses.push(collapse);
+    })
 };
 
 App.prototype.domActions = function() {

@@ -56,6 +56,10 @@ $(window).ready(function(){
 
     listenHelpers();
 
+    $('.collapse').each(function(){
+        new Collapse();
+    })
+
 });
 
 function listenHelpers() {

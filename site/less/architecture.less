@@ -1,0 +1,60 @@
+html {
+    width: 100%;
+    height: 100%;
+
+    body {
+        font-size: 15px;
+        line-height: 1.5;
+        font-family: 'Roboto';
+        padding: 20px;
+        margin: 0;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        color: #000;
+        background: #fff;
+
+        #menu {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 50px;
+            background: #fff;
+            z-index: 1;
+            border-bottom: 1px solid @grey-dark;
+        }
+
+        #content {
+            position: absolute;
+            left: 0;
+            top: 50px;
+            width: 100%;
+            height: ~'calc(100% - 50px)';
+        }
+    }
+}
+
+
+.pagewrap {
+    width: 1024px;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0 20px;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+canvas {
+    outline: none;
+}
+

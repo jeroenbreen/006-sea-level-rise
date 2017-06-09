@@ -1,0 +1,198 @@
+.story {
+    max-width: 650px;
+
+    .story-header {
+        text-align: center;
+        width: ~'calc(100% + 160px)';
+        margin-left: -80px;
+
+        h1 {
+            font-family: 'Fira Sans';
+            font-size: 48px;
+            line-height: 44px;
+            font-weight: 100;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        h2 {
+            font-family: 'Fira Sans';
+            font-size: 48px;
+            line-height: 48px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            background: rgba(255,255,255,0.8);
+            padding: 20px;
+            margin: 0;
+        }
+
+        .story-header-image {
+            margin-top: 20px;
+            position: relative;
+
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+
+            .story-header-image-text {
+                position: absolute;
+                left: 0;
+                top: 20px;
+                width: 100%;
+            }
+        }
+    }
+
+    .story-intro {
+        font-size: 17px;
+        line-height: 25px;
+        margin-bottom: 50px;
+        padding: 0 60px;
+    }
+
+    .story-index {
+        background: #333;
+        padding: 20px 20px 50px 80px;
+        text-align: left;
+        color: #fff;
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+
+            li a {
+                font-size: 12px;
+                color: #fff;
+            }
+        }
+
+
+        h3 {
+            font-family: 'Fira Sans';
+            font-size: 20px;
+            line-height: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    }
+
+    .story-chapter {
+        margin-top: 80px;
+
+        h2 {
+            font-size: 32px;
+            line-height: 32px;
+        }
+    }
+
+
+    .story-references {
+        border-left: 1px solid #e03a6c;
+        margin: 40px 0;
+        padding: 10px 30px;
+
+        h3 {
+            font-family: 'Fira Sans';
+            font-size: 15px;
+            line-height: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 0;
+            color: #e03a6c;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+
+            li a {
+                font-size: 12px;
+                color: #e03a6c;
+            }
+        }
+    }
+
+    .story-img-frame {
+        padding: 20px;
+        background: #ddd;
+        margin: 20px 0;
+    }
+
+    .story-quote {
+        font-family: 'Merriweather';
+        font-size: 22px;
+        line-height: 26px;
+        padding: 10px 30px;
+        color: #e03a6c;
+        border-left: 4px solid #e03a6c;
+        margin: 40px 0;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+}
+
+
+
+
+
+.story-img-text {
+    font-size: 11px;
+    margin: 10px 0;
+}
+
+.story-tile-frame {
+    width: 500px;
+    border-left: 4px solid #e03a6c;
+    padding: 40px;
+    cursor: pointer;
+    background: #eee;
+}
+
+.story-tile-frame:hover h4 {
+    text-decoration: underline;
+}
+
+.story-tile-frame:hover .story-tile-button {
+    color: #e03a6c;
+}
+
+.story-file-text {
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+}
+
+.story-tile-image {
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+}
+
+.story-tile-frame h4 {
+    font-family: 'Merriweather';
+    font-weight: 400;
+    color: #e03a6c;
+}
+
+.story-tile-button {
+    display: inline-block;
+    margin-right: 4px;
+    width: 24px;
+    height: 24px;
+    padding: 5px 1px 3px 7px;
+    font-size: 12px;
+    line-height: 12px;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+}

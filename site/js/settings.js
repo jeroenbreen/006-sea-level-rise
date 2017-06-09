@@ -10,17 +10,18 @@ var settings = {
         land: 'EBFFD9',
         water: '3ad',
         tile: 'fff'
+    },
+    collapse: {
+        menu: 50,
+        closed: 50,
+        n: 3
     }
 };
 
 var pickers = {};
 
 
-// $(window).load(function(){
-//     addColorPicker('land');
-//     addColorPicker('water');
-//     addColorPicker('tile');
-// });
+
 
 function addColorPicker(type) {
     var set = $('<div class="color-set"></div>'),
