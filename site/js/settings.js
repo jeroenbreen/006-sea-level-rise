@@ -9,7 +9,7 @@ var settings = {
     color: {
         land: 'EBFFD9',
         water: '3ad',
-        tile: '000'
+        tile: 'fff'
     }
 };
 

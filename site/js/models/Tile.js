@@ -42,7 +42,7 @@ Tile.prototype.initModel = function() {
     this.engine = new BABYLON.Engine(this.canvas, true);
 
     this.scene = this.getScene();
-    this.light = this.getLight(new BABYLON.Vector3(-6, -10, 10), 1);
+    this.light = this.getLight(new BABYLON.Vector3(-6, -10, 10), 1.2);
     this.camera = this.getCamera(-Math.PI/2.5, Math.PI/5, 17, BABYLON.Vector3.Zero(), false);
     this.tile = this.getTile();
     this.land = this.getLand();
