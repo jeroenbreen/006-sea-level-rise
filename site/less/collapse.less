@@ -20,14 +20,37 @@
         height: 36px;
         text-align: center;
         background: @grey-light;
-        border-bottom: 1px solid @grey-dark;
+        border-top: 1px solid @grey-dark;
         padding-top: 7px;
         cursor: pointer;
         position: relative;
         z-index: 1;
+        font-weight: 700;
 
         &:hover {
-            background: #fff;
+            background: #eee;
+        }
+
+        .collapse-read-more {
+            font-size: 10px;
+            position: relative;
+            padding: 0 16px 0 8px;
+            display: inline-block;
+            border-left: 1px solid #000;
+            font-family: @condensed;
+            font-weight: 400;
+            margin-left: 3px;
+
+            &:after {
+                position: absolute;
+                right: 4px;
+                top: 6px;
+                width: 8px;
+                height: 5px;
+                background-size: 100% 100%;
+                background-image: url(img/icons/arrow-down.svg);
+                content: '';
+            }
         }
     }
 
@@ -36,7 +59,17 @@
         .collapse-head {
             background: #fff;
             cursor: default;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+
+            .collapse-read-more {
+                display: none;
+            }
+        }
+    }
+
+    &:first-child {
+
+        .collapse-head {
+            border-top: 0;
         }
     }
 }

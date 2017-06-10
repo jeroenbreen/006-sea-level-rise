@@ -37,7 +37,7 @@ html {
 
 
 .pagewrap {
-    width: 1600px;
+    width: @pagewrap-width;
     margin: 0 auto;
     max-width: 100%;
     padding: 0 20px;
@@ -58,3 +58,12 @@ canvas {
     outline: none;
 }
 
+
+@media (max-width: @pagewrap-width) {
+
+    .pagewrap {
+        width: 100%;
+        margin: 0;
+    }
+
+}

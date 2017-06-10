@@ -4,15 +4,16 @@
     left: 0;
     top: 0;
     height: 100%;
-    padding-left: 40px;
 
     .tile {
         float: left;
         color: #000;
         height: 100%;
         overflow: auto;
+        padding-left: 40px;
 
         .tile-left {
+            margin-left: ~'calc(50% - 0.5 * @{pagewrap-width})';
             width: 600px;
             padding: 20px;
             float: left;
@@ -180,7 +181,8 @@
         }
 
         .tile-right {
-            width: ~'calc(100% - 600px)';
+            width: @pagewrap-width - 600px;
+            position: relative;
             float: left;
             border-left: 1px solid @grey-dark;
 
@@ -238,4 +240,50 @@
         }
 
     }
+}
+
+
+
+@media (max-width: @pagewrap-width) {
+
+    #tiles {
+
+        .tile {
+            padding-left: 0;
+
+            .tile-left {
+                margin-left: 0;
+                width: 50%;
+            }
+
+            .tile-right {
+                width: 50%;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    #tiles {
+
+        .tile {
+
+            .tile-left {
+                float: none;
+                width: 100%;
+
+                .tile-canvas-tools {
+                    display: none;
+                }
+            }
+
+            .tile-right {
+                float: none;
+                width: 100%;
+            }
+        }
+    }
+
 }

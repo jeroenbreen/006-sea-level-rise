@@ -69,8 +69,6 @@ Tile.prototype.init = function(tileData) {
     this.addListeners();
     this.initModel();
     this.slider = new Slider(this.app, this);
-    this.play();
-    this.delayStop();
 };
 
 Tile.prototype.initModel = function() {
@@ -266,9 +264,9 @@ Tile.prototype.update = function(percentage, year) {
     }
     this.data.current = (this.data.max - this.data.min) * percentage + this.data.min;
     this.updateWater();
-    this.delayStop();
     this.element.status.year.html(year);
     this.element.status.meters.html(meters + 'm');
+    this.delayStop();
 };
 
 Tile.prototype.updateWater = function() {

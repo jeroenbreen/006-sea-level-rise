@@ -1,6 +1,9 @@
 <div id="tiles-index">
     <div class="tiles-index-label">
-        Pick a Case:
+        <img src="img/icons/case.svg">
+        <div class="tiles-index-label-text">
+            Pick a Case:
+        </div>
     </div>
     <div id="tiles-index-set">
 

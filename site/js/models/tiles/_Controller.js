@@ -19,11 +19,14 @@ _Controller.prototype.stop = function() {
 
 
 
-_Controller.prototype.delayStop = function() {
+_Controller.prototype.delayStop = function(delay) {
     var self = this;
+    if (!delay) {
+        delay = 1000;
+    }
     this.timer = setTimeout(function(){
         self.stop();
-    }, 500)
+    }, delay)
 };
 
 

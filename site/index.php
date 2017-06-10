@@ -61,33 +61,46 @@
 
         <div id="content">
             <div class="collapse">
-                <div class="collapse-body">
-                    <div class="pagewrap">
-                        <?php include('php/introduction.php'); ?>
+                <div class="collapse-head">
+                    I. Introduction
+                    <div class="collapse-read-more">
+                        Read More
                     </div>
                 </div>
-                <div class="collapse-head">
-                    Introduction
+                <div class="collapse-body">
+                    <div class="pagewrap">
+                        <div class="story">
+                            <?php include('php/introduction.php'); ?>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="collapse">
-                <div class="collapse-body">
-                    <div class="pagewrap">
-                        <?php include('php/causes.php'); ?>
+                <div class="collapse-head">
+                    II. Causes
+                    <div class="collapse-read-more">
+                        Read More
                     </div>
                 </div>
-                <div class="collapse-head">
-                    Causes
+                <div class="collapse-body">
+                    <div class="pagewrap">
+                        <div class="story">
+                            <?php include('php/causes.php'); ?>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="collapse collapse--open">
+                <div class="collapse-head">
+                    III. Cases
+                    <div class="collapse-read-more">
+                        Read More
+                    </div>
+                </div>
                 <div class="collapse-body">
                     <?php include('php/cases.php'); ?>
-                </div>
-                <div class="collapse-head">
-                    Cases
                 </div>
             </div>
         </div>

@@ -50,7 +50,11 @@ Slider.prototype.addListeners = function() {
         max: 100,
         value: self.status.current,
         slide: function(event, ui){
-            self.tile.update(ui.value / 100, self.percentageToYear(ui.value / 100));
+            var percentage = ui.value / 100;
+            if (self.status.term === 'long') {
+                percentage *= self.status.ratio;
+            }
+            self.tile.update(percentage, self.percentageToYear(ui.value / 100));
             self.status.current = Number(ui.value);
         },
         create: function(event, ui){
