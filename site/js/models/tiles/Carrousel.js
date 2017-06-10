@@ -19,16 +19,8 @@ Carrousel.prototype.slideTo = function(n) {
 };
 
 Carrousel.prototype._moveSlider = function() {
-    var self = this,
-        left = ' -' + (this.current * this.width) + 'px';
+    var left = ' -' + (this.current * this.width) + 'px';
     this.element.css('left', left);
-    $('.tile').each(function(){
-        if (this === $('#tile-' + self.current)[0]) {
-            $(this).addClass('current');
-        } else {
-            $(this).removeClass('current');
-        }
-    });
 
     if (this.current === 0) {
         $('.slider-button-prev').fadeOut(200);

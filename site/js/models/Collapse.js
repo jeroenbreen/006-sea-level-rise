@@ -39,8 +39,6 @@ Collapse.prototype.open = function() {
             collapse.doClose();
         }
     }
-
-
 };
 
 Collapse.prototype.doOpen = function() {

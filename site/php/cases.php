@@ -1,5 +1,12 @@
+<div id="tiles-index">
+    <div class="tiles-index-label">
+        Pick a Case:
+    </div>
+    <div id="tiles-index-set">
+
+    </div>
+</div>
+
 <div class="wrapper">
     <div id="tiles"></div>
-    <div class="slider-button slider-button-next" onclick="app.slider.next()"></div>
-    <div class="slider-button slider-button-prev" onclick="app.slider.prev()"></div>
 </div>

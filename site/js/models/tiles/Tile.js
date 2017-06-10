@@ -65,6 +65,7 @@ Tile.prototype = Object.create(_Controller.prototype);
 Tile.prototype.init = function(tileData) {
     this.data.current = this.data.min;
     this.create();
+    this.createIndexButton();
     this.addListeners();
     this.initModel();
     this.slider = new Slider(this.app, this);
@@ -150,6 +151,26 @@ Tile.prototype.create = function() {
     tile.css('width', this.parentElement.parent().outerWidth());
     this.parentElement.append(tile);
     this.canvas = canvas[0];
+};
+
+Tile.prototype.createIndexButton = function() {
+    var self = this,
+        button = $('<div class="tile-index-button tile-index-button-' + this.index + '">' + this.data.location + '</div>');
+    if (this.index === 0) {
+        button.addClass('tile-index-button--active');
+    }
+
+    button.click(function(){
+        self.app.carrousel.slideTo(self.index);
+        $('.tile-index-button').each(function(){
+            if ($(this).hasClass('tile-index-button-' + self.index)) {
+                $(this).addClass('tile-index-button--active');
+            } else {
+                $(this).removeClass('tile-index-button--active');
+            }
+        })
+    });
+    $('#tiles-index-set').append(button);
 };
 
 Tile.prototype.addListeners = function() {

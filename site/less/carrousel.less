@@ -1,42 +1,80 @@
+#tiles-index {
+    height: 50px;
+    border-bottom: 1px solid @grey-tools;
+
+    .tiles-index-label {
+        padding: 16px 12px 0 12px;
+        border-right: 1px solid @grey-tools;
+        display: inline-block;
+        height: 100%;
+        vertical-align: top;
+        width: 112px;
+    }
+
+    #tiles-index-set {
+        vertical-align: top;
+        display: inline-block;
+        padding: 10px 12px 0 12px;
+
+        .tile-index-button {
+            background: @main-color;
+            font-family: @serif;
+            display: inline-block;
+            padding: 6px 12px;
+            margin-right: 4px;
+            cursor: pointer;
+            color: #fff;
+            font-weight: 400;
+            font-size: 12px;
+
+            &:hover {
+                background: @grey-tools;
+            }
+
+            &.tile-index-button--active {
+                background: @main-color-dark;
+            }
+        }
+    }
+}
+
 .wrapper {
-    height: 100%;
+    height: ~'calc(100% - 50px)';
     width: 100%;
     position: relative;
+    overflow: hidden;
+
+    .slider-button {
+        z-index: 10;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: calc(50% - 20px);
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        color: #222;
+        text-align: center;
+        font-size: 40px;
+        padding-top: 6px;
+        line-height: 20px;
+        cursor: pointer;
+
+        &.slider-button-next {
+            right: 10px;
+
+            &:after {
+                content: '›';
+            }
+        }
+
+        &.slider-button-prev {
+            left: 10px;
+
+            &:after {
+                content: '‹';
+            }
+        }
+    }
 }
 
-.slider-button {
-    z-index: 10;
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    top: calc(50% - 20px);
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    color: #222;
-    text-align: center;
-    font-size: 40px;
-    padding-top: 6px;
-    line-height: 20px;
-    cursor: pointer;
-}
-
-.minimized .slider-button {
-    display: none!important;
-}
-
-.slider-button-next {
-    right: 10px;
-}
-
-.slider-button-next:after {
-    content: '›';
-}
-
-.slider-button-prev {
-    left: 10px;
-}
-
-.slider-button-prev:after {
-    content: '‹';
-}

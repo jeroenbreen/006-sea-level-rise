@@ -84,9 +84,7 @@
 
             <div class="collapse collapse--open">
                 <div class="collapse-body">
-                    <div class="pagewrap">
-                        <?php include('php/cases.php'); ?>
-                    </div>
+                    <?php include('php/cases.php'); ?>
                 </div>
                 <div class="collapse-head">
                     Cases
