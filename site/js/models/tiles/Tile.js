@@ -113,13 +113,15 @@ Tile.prototype.create = function() {
     this.element.status.meters = $('<div class="tile-status-meters"></div>');
     canvas = $('<canvas class="tile-canvas" id="tile-' + this.data.title.toLowerCase() + '"></canvas>');
     canvasTools = $('<div class="tile-canvas-tools"></div>');
+
     sliderTools = $('<div class="tile-canvas-tools-set"><div class="tile-canvas-tools-set-label">Long-term / Short-term</div></div>');
-    this.element.tools.slider.shortTerm = $('<div></div>');
-    this.element.tools.slider.longTerm = $('<div></div>');
+    this.element.tools.slider.shortTerm = $('<div class="tile-canvas-tool-slider-button tile-canvas-tool-slider-button--active"><div class="tile-canvas-tool-slider-button-icon tile-canvas-tool-slider-button-icon--short"></div><div class="tile-canvas-tool-slider-button-label">Show this Century</div></div>');
+    this.element.tools.slider.longTerm = $('<div class="tile-canvas-tool-slider-button"><div class="tile-canvas-tool-slider-button-icon tile-canvas-tool-slider-button-icon--long"></div><div class="tile-canvas-tool-slider-button-label">Show Long-term</div></div>');
 
     cameraTools = $('<div class="tile-canvas-tools-set"><div class="tile-canvas-tools-set-label">Camera</div></div>');
     this.element.tools.camera.ortho = $('<div class="tile-canvas-tool-icon tile-canvas-tool-icon--ortho"></div>');
     this.element.tools.camera.perspective = $('<div class="tile-canvas-tool-icon tile-canvas-tool-icon--active tile-canvas-tool-icon--perspective"></div>');
+
     textureTools = $('<div class="tile-canvas-tools-set"><div class="tile-canvas-tools-set-label">Texture</div></div>');
     this.element.tools.texture.full = $('<div class="tile-canvas-tool-icon tile-canvas-tool-icon--active tile-canvas-tool-icon--texture-full"></div>');
     this.element.tools.texture.mono = $('<div class="tile-canvas-tool-icon tile-canvas-tool-icon--texture-mono"></div>');
@@ -153,12 +155,20 @@ Tile.prototype.create = function() {
 Tile.prototype.addListeners = function() {
     var self = this;
 
+    this.element.tools.slider.shortTerm.click(function(){
+        self.slider.setLength('short');
+    });
+    this.element.tools.slider.longTerm.click(function(){
+        self.slider.setLength('long');
+    });
+
     this.element.tools.camera.ortho.click(function(){
         self.setCamera(true);
     });
     this.element.tools.camera.perspective.click(function(){
         self.setCamera(false);
     });
+
     this.element.tools.texture.full.click(function(){
         self.setTexture(true);
     });

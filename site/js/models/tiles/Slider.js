@@ -1,6 +1,11 @@
 function Slider(app, tile) {
     this.app = app;
     this.tile = tile;
+    this.status = {
+        term: 'short',
+        ratio: this.getRatio(),
+        current: 0
+    };
     this.element = {
         main: null,
         wrapper: null,
@@ -15,12 +20,12 @@ Slider.prototype.init = function() {
 };
 
 Slider.prototype.create = function() {
-    var subdivision = 12, ratio = this.getRatio();
+    var subdivision = 12;
     this.element.main = $('<div class="tile-slider"></div>');
     this.element.wrapper = $('<div class="tile-slider-wrapper"></div>');
     this.element.axis = $('<div class="tile-slider-axis"></div>');
 
-    this.element.axis.css('width', (ratio * 100) + '%');
+    this.element.axis.css('width', (this.status.ratio * 100) + '%');
 
     this.element.wrapper.append(this.element.axis);
     this.element.main.append(this.element.wrapper);
@@ -38,14 +43,15 @@ Slider.prototype.create = function() {
 
 Slider.prototype.addListeners = function() {
     var self = this;
-
+    this.status.current = this.yearToPercentage(settings.tile.slider.year.start) * 100;
     this.element.main.slider({
         orientation: 'horizontal',
-        min: settings.tile.slider.year.short.min,
-        max: settings.tile.slider.year.short.max,
-        value: settings.tile.slider.year.start,
+        min: 0,
+        max: 100,
+        value: self.status.current,
         slide: function(event, ui){
-            self.tile.update(self.yearToPercentage(ui.value), ui.value);
+            self.tile.update(ui.value / 100, self.percentageToYear(ui.value / 100));
+            self.status.current = Number(ui.value);
         },
         create: function(event, ui){
             self.tile.update(self.yearToPercentage(settings.tile.slider.year.start), settings.tile.slider.year.start);
@@ -54,10 +60,41 @@ Slider.prototype.addListeners = function() {
 };
 
 
+// toggle
+
+Slider.prototype.setLength = function(setting) {
+    if (setting !== this.status.term) {
+        this.status.term = setting;
+
+        if (this.status.term === 'long') {
+            this.element.axis.css('width', '100%');
+            this.status.current /= this.status.ratio;
+            this.element.main.slider('value', this.status.current);
+            this.tile.element.tools.slider.shortTerm.removeClass('tile-canvas-tool-slider-button--active');
+            this.tile.element.tools.slider.longTerm.addClass('tile-canvas-tool-slider-button--active');
+        } else {
+            this.element.axis.css('width', (this.status.ratio * 100) + '%');
+            this.status.current *= this.status.ratio;
+            if (this.status.current > 100) {
+                this.status.current = 100;
+                this.tile.update(1, this.percentageToYear(1));
+            }
+            this.element.main.slider('value', this.status.current);
+            this.tile.element.tools.slider.shortTerm.addClass('tile-canvas-tool-slider-button--active');
+            this.tile.element.tools.slider.longTerm.removeClass('tile-canvas-tool-slider-button--active');
+        }
+    }
+};
+
+
 // helpers
 
 Slider.prototype.yearToPercentage = function(year) {
-    return (Number(year) - settings.tile.slider.year.short.min) / (settings.tile.slider.year.short.max - settings.tile.slider.year.short.min);
+    return (year - settings.tile.slider.year[this.status.term].min) / (settings.tile.slider.year[this.status.term].max - settings.tile.slider.year[this.status.term].min);
+};
+
+Slider.prototype.percentageToYear = function(percentage) {
+    return (settings.tile.slider.year[this.status.term].max - settings.tile.slider.year[this.status.term].min) * percentage + settings.tile.slider.year[this.status.term].min;
 };
 
 Slider.prototype.getRatio = function() {

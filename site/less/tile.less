@@ -31,14 +31,72 @@
 
                 .tile-canvas-tools-set {
                     margin-bottom: 10px;
+                    border-left: 1px solid @grey-tools;
 
                     .tile-canvas-tools-set-label {
                         display: inline-block;
                         line-height: 1;
                         vertical-align: top;
-                        padding-top: 6px;
-                        width: 60px;
+                        padding: 10px 6px;
+                        width: 70px;
                         font-family: @condensed;
+                        font-weight: 700;
+                    }
+
+                    .tile-canvas-tool-slider-button {
+                        display: inline-block;
+                        text-align: center;
+                        padding: 0 10px 10px;
+                        cursor: pointer;
+                        border-bottom: 1px solid transparent;
+                        margin: 0 4px 8px 0;
+
+                        &:hover {
+                            border-bottom: 1px solid @grey-tools;
+                        }
+
+                        &.tile-canvas-tool-slider-button--active {
+                            border-bottom: 1px solid @grey-tools;
+
+                            .tile-canvas-tool-slider-button-icon {
+
+                                &.tile-canvas-tool-slider-button-icon--short {
+                                    background-image: url(img/icons/shortterm-grey.svg);
+                                }
+
+                                &.tile-canvas-tool-slider-button-icon--long {
+                                    background-image: url(img/icons/longterm-grey.svg);
+                                }
+                            }
+
+                            .tile-canvas-tool-slider-button-label {
+                                color: @grey-tools;
+                            }
+                        }
+
+                        .tile-canvas-tool-slider-button-icon {
+                            width: 36px;
+                            height: 36px;
+                            background-size: 100% 100%;
+                            display: inline-block;
+
+                            &.tile-canvas-tool-slider-button-icon--short {
+                                background-image: url(img/icons/shortterm.svg);
+                            }
+
+                            &.tile-canvas-tool-slider-button-icon--long {
+                                background-image: url(img/icons/longterm.svg);
+                            }
+                        }
+
+                        .tile-canvas-tool-slider-button-label {
+                            font-size: 16px;
+                            color: @main-color;
+                            max-width: 100px;
+                            line-height: 1;
+                        }
+
+
                     }
 
                     .tile-canvas-tool-icon {
@@ -47,19 +105,20 @@
                         margin-right: 4px;
                         display: inline-block;
                         background-color: #fff;
-                        box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
                         background-size: 100% 100%;
                         cursor: pointer;
-                        border: 1px solid transparent;
+                        opacity: 0.5;
+
 
                         &:hover {
-                            background-color: @grey-light;
+                            opacity: 1;
                         }
 
                         &.tile-canvas-tool-icon--active {
-                            border: 1px solid @main-color;
                             cursor: default;
                             background-color: #fff;
+                            box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+                            opacity: 1;
                         }
 
                         &.tile-canvas-tool-icon--ortho {
