@@ -73,21 +73,6 @@
         posuere ante. Sed eu elit tristique, euismod massa in, congue
         lacus. Etiam quis tortor dui. In nec nulla tortor.
     </p>
-
-    <div class="story-references">
-        <h3>References</h3>
-        <ul>
-            <li>
-                <a href="">Rererence 1</a>
-            </li>
-            <li>
-                <a href="">Rererence 1</a>
-            </li>
-            <li>
-                <a href="">Rererence 1</a>
-            </li>
-        </ul>
-    </div>
 </div>
 
 

@@ -76,9 +76,9 @@
                 </div>
             </div>
 
-            <div class="collapse">
+            <div class="collapse collapse--open">
                 <div class="collapse-head">
-                    II. Causes
+                    II. Facts and Figures
                     <div class="collapse-read-more">
                         Read More
                     </div>
@@ -86,13 +86,13 @@
                 <div class="collapse-body">
                     <div class="pagewrap">
                         <div class="story">
-                            <?php include('php/causes.php'); ?>
+                            <?php include('php/facts-and-figures.php'); ?>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="collapse collapse--open">
+            <div class="collapse">
                 <div class="collapse-head">
                     III. Cases
                     <div class="collapse-read-more">
